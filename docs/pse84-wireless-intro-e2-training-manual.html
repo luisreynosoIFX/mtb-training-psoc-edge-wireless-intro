@@ -1,0 +1,2350 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on training manual for PSOC™ Edge E84 wireless applications, covering Wi-Fi onboarding over Bluetooth® LE, Bluetooth® LE Audio, Wi-Fi MQTT with the Virtual Connectivity Manager, and WLAN low-power assistant offloads using the CYW55513 combo device.
+">
+      
+      
+        <meta name="author" content="Infineon Technologies AG">
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lab Manual - PSOC™ Edge Training - Wireless Introduction</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#psoctm-edge-e84-wireless-introduction-training-manual" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="PSOC™ Edge Training - Wireless Introduction" class="md-header__button md-logo" aria-label="PSOC™ Edge Training - Wireless Introduction" data-md-component="logo">
+      
+  <img src="assets/images/infineon_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PSOC™ Edge Training - Wireless Introduction
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Infineon/mtb-training-psoc-edge-wireless-intro" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Infineon/mtb-training-psoc-edge-wireless-intro
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="PSOC™ Edge Training - Wireless Introduction" class="md-nav__button md-logo" aria-label="PSOC™ Edge Training - Wireless Introduction" data-md-component="logo">
+      
+  <img src="assets/images/infineon_logo.png" alt="logo">
+
+    </a>
+    PSOC™ Edge Training - Wireless Introduction
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Infineon/mtb-training-psoc-edge-wireless-intro" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Infineon/mtb-training-psoc-edge-wireless-intro
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Manual
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="pse84-wireless-intro-e2-training-manual.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About this document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intended-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intended audience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-development-tools-and-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required development tools and prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-wi-fi-onboarding-using-ble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 1: Wi-Fi onboarding using BLE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-bluetooth-le-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 2: Bluetooth® LE Audio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-adding-connectivity-to-machine-learning-with-dual-core-virtual-mqtt-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 3: Adding connectivity to machine learning with dual-core virtual MQTT client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-4-wlan-low-power-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 4: WLAN Low-Power Assistant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A: Creating a PSOC™ Edge application in ModusToolbox™
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-kit_pse84_eval-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix B: KIT_PSE84_EVAL details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-c-kit_pse84_ai-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix C: KIT_PSE84_AI details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revision-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revision history
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="psoctm-edge-e84-wireless-introduction-training-manual">PSOC™ Edge E84 wireless introduction training manual<a class="headerlink" href="#psoctm-edge-e84-wireless-introduction-training-manual" title="Permanent link">&para;</a></h1>
+<h2 id="about-this-document">About this document<a class="headerlink" href="#about-this-document" title="Permanent link">&para;</a></h2>
+<p>This is the lab manual for the PSOC™ Edge E84 Wireless Introduction training.</p>
+<h2 id="scope-and-purpose">Scope and purpose<a class="headerlink" href="#scope-and-purpose" title="Permanent link">&para;</a></h2>
+<p>This training manual provides a comprehensive guide to getting started with Wi-Fi and Bluetooth® applications using the PSOC™ Edge E84 MCU, including detailed instructions on creating, configuring, building, and running application code examples using ModusToolbox™.</p>
+<h2 id="intended-audience">Intended audience<a class="headerlink" href="#intended-audience" title="Permanent link">&para;</a></h2>
+<p>This manual is intended for embedded developers, application engineers, and technical users who are new to Wi-Fi and Bluetooth® connectivity with PSOC™ Edge and ModusToolbox™.</p>
+<h3 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#about-this-document">About this document</a></li>
+<li><a href="#scope-and-purpose">Scope and purpose</a></li>
+<li><a href="#intended-audience">Intended audience</a></li>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#required-development-tools-and-prerequisites">Required development tools and prerequisites</a></li>
+<li><a href="#lab-1-wi-fi-onboarding-using-ble">Lab 1: Wi-Fi onboarding using BLE</a></li>
+<li><a href="#lab-2-bluetooth-le-audio">Lab 2: Bluetooth® LE Audio</a></li>
+<li><a href="#lab-3-adding-connectivity-to-machine-learning-with-dual-core-virtual-mqtt-client">Lab 3: Adding connectivity to machine learning with dual-core virtual MQTT client</a></li>
+<li><a href="#lab-4-wlan-low-power-assistant">Lab 4: WLAN Low-Power Assistant</a></li>
+<li><a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™</a></li>
+<li><a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a></li>
+<li><a href="#appendix-c-kit_pse84_ai-details">Appendix C: KIT_PSE84_AI details</a></li>
+<li><a href="#revision-history">Revision history</a></li>
+<li><a href="#disclaimer">Disclaimer</a></li>
+</ul>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This training introduces the PSOC™ Edge E84 platform and the CYW55513 Wi-Fi &amp; Bluetooth® combo device, and demonstrates how to use them together to build connected, machine-learning–enabled applications.</p>
+<p><strong>PSOC™ Edge</strong> combines high-performance Arm® Cortex®-M CPUs (a Cortex®-M55 with Helium DSP acceleration and an Ethos-U55 NPU, paired with a low-power Cortex®-M33) with dedicated AI/ML, graphics, and audio subsystems. This dual-core architecture lets designers dedicate one core to always-on tasks such as connectivity and system control, while the second core focuses on compute-intensive workloads such as inference or DSP, without one workload starving the other. It is well suited for use cases such as human-machine interfaces, remote sensing, condition monitoring, and other data-driven edge workloads.</p>
+<p>The <strong>CYW55513</strong> is a flexible, production-grade Wi-Fi and Bluetooth® combo solution that pairs well with PSOC™ Edge for both prototyping and deployment. It provides robust wireless connectivity for applications that require reliable IP networking, over-the-air updates, cloud integration, or peripheral/device communication over Bluetooth. It also includes power-management features, through the Low-Power Assistant middleware, that let the host MCU remain in deep sleep for long periods while the combo device filters unwanted network traffic. Used as a wireless companion to PSOC™ Edge, it allows designers to add standards-based connectivity without overloading the main MCU and while keeping a clean separation between application processing and radio functionality.</p>
+<p>Throughout this training, you will gain practical, hands-on experience with the PSOC™ Edge E84 evaluation kit and the CYW55513-based wireless subsystem, using them not only to establish wireless connectivity but also to develop a clear understanding of the key capabilities and advantages of both devices.</p>
+<p>By the end of the labs, attendees will be able to:</p>
+<ul>
+<li>Set up and configure the PSOC™ Edge E84 hardware and associated peripherals.</li>
+<li>Integrate and configure the CYW55513 wireless device for Wi-Fi and Bluetooth® connectivity in PSOC™ Edge projects.</li>
+<li>Create and build PSOC™ Edge applications in ModusToolbox™, including selecting and instantiating example projects.</li>
+<li>Establish end-to-end wireless links suitable for cloud-connected, sensor-enabled, or interactive applications.</li>
+</ul>
+<p>These skills prepare participants to design and prototype their own connected edge systems using PSOC™ Edge with CYW55513 as the connectivity solution.</p>
+<h2 id="required-development-tools-and-prerequisites">Required development tools and prerequisites<a class="headerlink" href="#required-development-tools-and-prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h3>
+<h4 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h4>
+<p>This training guide uses the PSOC™ Edge E84 Evaluation Kit and/or the PSOC™ Edge E84 AI Kit. Refer to the lab instructions for details.</p>
+<ul>
+<li><a href="https://www.infineon.com/evaluation-board/KIT-PSE84-EVAL">PSOC™ Edge E84 Evaluation Kit</a> (KIT_PSE84_EVAL)<ul>
+<li>Ensure device boots from external memory: BOOT SW/SW6 in the 'ON'/'HIGH' position</li>
+<li>Disable the alternate serial interface configuration: J20/J21 in the Tristate/Not-Connected (NC) position</li>
+<li>See <a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a> for more details</li>
+</ul>
+</li>
+<li><a href="https://www.infineon.com/evaluation-board/KIT-PSE84-AI">PSOC™ Edge E84 AI Kit</a> (KIT_PSE84_AI)<ul>
+<li>See <a href="#appendix-c-kit_pse84_ai-details">Appendix C: KIT_PSE84_AI details</a> for more details</li>
+</ul>
+</li>
+</ul>
+<h4 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ModusToolbox™ software v3.9 or later<ul>
+<li>Recommended installation via the ModusToolbox™ Setup tool</li>
+</ul>
+</li>
+<li>Visual Studio Code with the <strong>Infineon ModusToolbox™ for VS Code</strong> extension v1.10.0 or later<ul>
+<li>Install <a href="https://code.visualstudio.com/">Visual Studio Code</a>, then install the extension from the VS Code Marketplace. The extension can also install the ModusToolbox™ software for you if it is not already present</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Command-line (CLI) instructions are also provided in <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™</a>.</p>
+</blockquote>
+<ul>
+<li>Edge Protect Security Suite v2.2.0 or later<ul>
+<li>Installed by the ModusToolbox™ Setup tool as a dependency to ModusToolbox™</li>
+</ul>
+</li>
+<li>ModusToolbox™ Programming Tools v1.9.0 or later<ul>
+<li>Installed by the ModusToolbox™ Setup tool as a dependency to ModusToolbox™</li>
+</ul>
+</li>
+<li>Board support package (BSP)<ul>
+<li>KIT_PSE84_EVAL_EPC2 and/or KIT_PSE84_AI</li>
+</ul>
+</li>
+<li>LLVM for Arm® v19.1.5 or later, if recommended by ModusToolbox™<ul>
+<li>See <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™</a> for LLVM installation and configuration steps</li>
+</ul>
+</li>
+<li>ModusToolbox™ Audio SW Codecs Tech Pack v1.0.2 or later<ul>
+<li>Recommended installation via the ModusToolbox™ Setup tool</li>
+</ul>
+</li>
+<li>Nmap v7.98 or later<ul>
+<li>Available at <a href="https://nmap.org/download">nmap.org/download</a></li>
+</ul>
+</li>
+<li>[Optional] Mosquitto MQTT broker<ul>
+<li>Download from <a href="https://mosquitto.org/download">mosquitto.org/download</a>. This is only needed when replicating the MQTT test on a local bench; it is not required for the live training at DevCon.</li>
+</ul>
+</li>
+<li>[Optional] MQTT Explorer<ul>
+<li>Download from the <a href="https://github.com/thomasnordquist/MQTT-Explorer/releases">MQTT Explorer releases page</a>. This is only needed when replicating the MQTT test on a local bench; it is not required for the live training at DevCon.</li>
+</ul>
+</li>
+<li>[Optional] Wireshark v4.6.3 or later<ul>
+<li>Available at <a href="https://www.wireshark.org/download.html">wireshark.org/download</a></li>
+</ul>
+</li>
+<li>Serial terminal emulator<ul>
+<li>Use Tera Term, PuTTY, or a similar terminal emulator</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Different versions of tools and evaluation kits are expected to work with minor or no changes.</p>
+</blockquote>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Install the software and obtain the hardware listed above.</li>
+<li>This is an introductory training to Wi-Fi and Bluetooth® connectivity with PSOC™ Edge and ModusToolbox™; however, it is not intended to cover all basic concepts of PSOC™ Edge, ModusToolbox™, or wireless protocols.<ul>
+<li>For an introduction to PSOC™, including a getting started guide to ModusToolbox™, visit the <a href="https://www.infineon.com/psocdeveloper">PSOC™ Developer Journey</a>.</li>
+<li>For PSOC™ Edge trainings, from beginner tutorials to advanced trainings, go to <a href="https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd">PSOC™ Edge Training Collection</a>.</li>
+<li>For Infineon Wi-Fi and Bluetooth® trainings, visit the <a href="https://training.infineon.com/video/0033a2c3-cfa6-40d2-9bde-780551f10c15">Introduction to Infineon Wi-Fi &amp; Bluetooth Training Collection</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="lab-1-wi-fi-onboarding-using-ble">Lab 1: Wi-Fi onboarding using BLE<a class="headerlink" href="#lab-1-wi-fi-onboarding-using-ble" title="Permanent link">&para;</a></h2>
+<h3 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h3>
+<p>In this lab, you will learn how to securely provision Wi-Fi credentials onto PSOC™ Edge over Bluetooth® LE, using the AIROC™ Bluetooth® Connect mobile application and a custom GATT service, avoiding the need to hardcode Wi-Fi credentials in the application.</p>
+<h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
+<p>This code example uses the CM33 CPU of PSOC™ Edge to communicate with the AIROC™ CYW55513 combo device and control both the Wi-Fi and Bluetooth® LE functionality. Bluetooth® LE is used to securely exchange the Wi-Fi SSID and password with a mobile application through a custom GATT service and characteristics, so the device can then connect to the Wi-Fi access point (AP).</p>
+<p>This example has a three-project structure (<code>proj_cm33_s</code>, <code>proj_cm33_ns</code>, and <code>proj_cm55</code>); all three projects are programmed to the external QSPI flash memory and executed in Execute-in-Place (XIP) mode. Extended boot launches the CM33 secure project, which configures the protection settings, launches the CM33 non-secure application, and enables the CM55 CPU.</p>
+<p>Wi-Fi onboarding using Bluetooth® LE is a common pattern for production IoT devices, since it lets an installer or end user provide network credentials through a mobile app instead of embedding them in firmware or requiring a wired/serial connection.</p>
+<h3 id="hardware-diagram">Hardware diagram<a class="headerlink" href="#hardware-diagram" title="Permanent link">&para;</a></h3>
+<p>This lab can use the PSOC™ Edge E84 EVK or the PSOC™ Edge E84 AI Kit.</p>
+<p>The main hardware components utilized by this lab are:</p>
+<ul>
+<li>UART: output information to serial terminal</li>
+<li>UART: Bluetooth® channel between PSOC™ Edge and CYW55513</li>
+<li>SDIO: Wi-Fi communication between PSOC™ Edge and CYW55513</li>
+<li><code>USER_BTN1</code>: clears the stored Wi-Fi credentials from non-volatile memory (NVM)</li>
+</ul>
+<p>Below is the hardware block diagram for this example using the PSOC™ Edge E84 AI Kit (top) and EVK (bottom):</p>
+<p><img src="assets/images/image_lab1_ai.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_lab1_evk.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<blockquote>
+<p><strong>Note:</strong> For the KIT_PSE84_EVAL_EPC2 EVK, set BOOT SW to ON. See <a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a>.
+This switch setting is not required for the KIT_PSE84_AI AI Kit.</p>
+</blockquote>
+<h3 id="project-creation">Project creation<a class="headerlink" href="#project-creation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Follow the steps in <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™</a> to create a new application.
+   When creating the application, select the <strong>PSOC™ Edge MCU: Wi-Fi onboarding using Bluetooth® LE</strong> application under the <strong>Bluetooth®</strong> category</li>
+</ol>
+<blockquote>
+<p><strong>Warning:</strong> Windows has a 260-character path length limit. A long workspace path and/or a long project name may cause build issues when creating some applications.</p>
+</blockquote>
+<p><img src="assets/images/image_lab1_wifi_onboarding_template.png" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>After opening the project in VS Code, go to the <strong>Application</strong> tab in the <strong>ModusToolbox™ for VS Code</strong> extension, and select the <strong>proj_cm33_ns</strong> application.
+   Then, scroll down to <strong>Tools</strong> and click <strong>Bluetooth® Configurator</strong></li>
+</ol>
+<p><img src="assets/images/image_lab1_bt_config.gif" alt="Figure" style="width:700px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>In the <strong>Bluetooth® Configurator</strong>, go to <strong>GAP Settings</strong>, select the <strong>General</strong> settings, and change <strong>Device name</strong> to a value of your preference.
+   Note that this step is optional; however, it helps identify your device</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The advertisement packet has a maximum length. The application will show an error if the device name exceeds the maximum length.</p>
+</blockquote>
+<p><img src="assets/images/image_lab1_bt_config_name.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li><strong>Save</strong> the file to regenerate the corresponding files and close <strong>Bluetooth® Configurator</strong></li>
+<li>Open <code>mtb_shared/wifi-host-driver/release-&lt;version&gt;/generated_mac_address.txt</code> and <code>NVRAM_GENERATED_MAC_ADDRESS</code> to assign a MAC address</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> This step is optional when testing one device, but it is necessary when connecting multiple EVKs to the same router. CYW55513 contains OTP bits which are programmed during production by the OEM or module partner. The OTP bits are not programmed in the EVK, so the device reads the MAC address from the file above, or you can program the OTP bits using APIs.</p>
+</blockquote>
+<ol start="6">
+<li>Select the main <strong>Application</strong> in the <strong>ModusToolbox™ for VS Code</strong> extension and click the <strong>Program</strong> button to program the application. Note that this step will also build the application before programming it. 
+   Make sure the top-level application, not an individual project, is selected to ensure all three projects (<code>cm33_s</code>, <code>cm33_ns</code>, and <code>cm55</code>) are built and programmed together</li>
+</ol>
+<p><img src="assets/images/image_lab1_program_application.png" alt="Figure" style="width:500px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="7">
+<li>After the program runs successfully, open the serial terminal and configure the baud rate to 115200-8-N-1. Then press the kit reset button</li>
+</ol>
+<p>Observe that the device initializes the Bluetooth® stack and starts advertising.</p>
+<p><img src="assets/images/image_lab1_output.gif" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="onboarding-wi-fi-credentials-over-bluetooth-le">Onboarding Wi-Fi credentials over Bluetooth® LE<a class="headerlink" href="#onboarding-wi-fi-credentials-over-bluetooth-le" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Install the <strong>AIROC™ Bluetooth® Connect</strong> mobile application on your Android or iOS device, and turn on Bluetooth® and Location services</li>
+</ol>
+<p><img src="assets/images/image_lab1_airoc.png" alt="Figure" style="width:160px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>Press the reset switch (XRES) on the kit to restart advertising</li>
+<li>Launch the AIROC™ Bluetooth® Connect app, and swipe down on the home screen to scan for Bluetooth® LE peripherals. Select your device (such as <strong>bleProv1</strong> as selected in <strong>Bluetooth® Configurator</strong>) to connect</li>
+</ol>
+<p><img src="assets/images/image_lab1_airoc_ble1.png" alt="Figure" style="width:400px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>Select the <strong>GATT DB profile</strong> from the carousel view, and select the service shown (custom Wi-Fi onboarding service)</li>
+<li>Click the <strong>Notify</strong> button to enable notifications on the characteristic ending in <strong>66</strong> (Wi-Fi scan results)</li>
+</ol>
+<p><img src="assets/images/image_lab1_notify66.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>Then, select the characteristic ending in <strong>67</strong> (Wi-Fi control). Click the <strong>Notify</strong> button, and <strong>Write</strong> a hex value of <strong>2</strong> to start a Wi-Fi scan</li>
+</ol>
+<p><img src="assets/images/image_lab1_notify67_1.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="7">
+<li>The device starts scanning and sends the network details as notifications in the characteristic with UUID ending in 66. The terminal prints the available Wi-Fi networks as shown below</li>
+</ol>
+<p><img src="assets/images/image_lab1_notify67_2.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="8">
+<li>Using this same approach, provide the Wi-Fi credentials to the device by sending the SSID in ASCII or hex using the characteristic ending in <strong>63</strong>, and the password to the characteristic ending in <strong>64</strong>.
+   Note that the application will ask for a passkey. Write the passkey shown in the terminal</li>
+</ol>
+<p><img src="assets/images/image_lab1_passkey.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="9">
+<li>After sending the SSID and password, go to the characteristic ending in <strong>67</strong>. 
+   Enable notifications (if not enabled already) and write the hex value as <strong>1</strong> to this characteristic to connect to the Wi-Fi network. 
+   If the connection is successful, the server sends a notification with a value of 1, otherwise with a value of 0. The terminal will also show the results</li>
+</ol>
+<p><img src="assets/images/image_lab1_notify67_3.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<blockquote>
+<p><strong>Note:</strong> Once a successful connection is established, the SSID and password are stored in non-volatile memory (NVM) and are used automatically on subsequent boots. Press <strong>USER_BTN1</strong> to erase the stored credentials.</p>
+</blockquote>
+<h3 id="modify-the-example-indicate-wi-fi-connection-status-with-an-led">Modify the example: indicate Wi-Fi connection status with an LED<a class="headerlink" href="#modify-the-example-indicate-wi-fi-connection-status-with-an-led" title="Permanent link">&para;</a></h3>
+<p>The connection result (success or failure) is already available in the code as the value written to the notification characteristic ending in <code>67</code>. This modification reuses that same result to drive <code>CYBSP_USER_LED1</code>, giving a visible status indicator in addition to the terminal output.</p>
+<ol>
+<li>Open <code>proj_cm33_ns/main.c</code> and add the following code in <code>main()</code> to initialize the GPIO driving the LED</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> This document includes code snippets using C and diff syntax. The snippet below uses C syntax allowing for easier copying.
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">Cy_GPIO_Pin_FastInit</span><span class="p">(</span><span class="n">CYBSP_USER_LED1_PORT</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                        </span><span class="n">CYBSP_USER_LED1_PIN</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                        </span><span class="n">CY_GPIO_DM_STRONG</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                        </span><span class="n">CYBSP_LED_STATE_OFF</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                        </span><span class="n">HSIOM_SEL_GPIO</span><span class="p">);</span>
+</code></pre></div></p>
+</blockquote>
+<ol start="2">
+<li>Locate the function <code>wifi_task()</code> in <code>proj_cm33_ns/wifi_task.c</code>. This function handles the Wi-Fi connection request and writes the result back to the characteristic ending in <code>67</code>.
+   Add the following code to drive the LED with the connection result:</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> This document includes code snippets using C and diff syntax. The snippet below uses diff syntax to highlight difference between removed (red) and added (green) lines.</p>
+</blockquote>
+<ul>
+<li>
+<p>Modification #1:
+<div class="highlight"><pre><span></span><code><span class="w"> </span>           if(CY_RSLT_SUCCESS == result)
+<span class="w"> </span>           {
+<span class="w"> </span>               printf(&quot;Successfully joined the Wi-Fi network\n&quot;);
+<span class="gi">+                Cy_GPIO_Write(CYBSP_USER_LED1_PORT, CYBSP_USER_LED1_PIN, CYBSP_LED_STATE_ON);</span>
+
+<span class="w"> </span>               /* Update GATT DB about connection */
+<span class="w"> </span>               app_custom_service_wifi_control[0] = WIFI_CONTROL_CONNECT;
+</code></pre></div></p>
+</li>
+<li>
+<p>Modification #2:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>               else /* Notification not sent */
+<span class="w"> </span>               {
+<span class="w"> </span>                   printf(&quot;Notification not sent\n&quot;);
+<span class="w"> </span>               }
+
+<span class="w"> </span>               printf(&quot;Failed to join Wi-Fi network\n&quot;);
+<span class="gi">+                Cy_GPIO_Write(CYBSP_USER_LED1_PORT, CYBSP_USER_LED1_PIN, CYBSP_LED_STATE_OFF);</span>
+</code></pre></div>
+<ol start="3">
+<li>Save the file, rebuild, and reprogram the application.
+   Repeat the onboarding flow from the previous section. <code>CYBSP_USER_LED1</code> should turn on when the Wi-Fi connection succeeds, and turn (or stay) off if it fails</li>
+</ol>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>You successfully used Bluetooth® LE and a custom GATT service to provision Wi-Fi credentials onto PSOC™ Edge without hardcoding them in the application or requiring a wired connection, using the AIROC™ Bluetooth® Connect mobile app to scan, select, and connect to a Wi-Fi network.</p>
+<p>This demonstrates a practical onboarding flow for connected products, and shows how PSOC™ Edge and CYW55513 can combine Bluetooth® LE and Wi-Fi on the same CM33 core to simplify production and field deployment.</p>
+<p>From a product perspective, this onboarding flow is what end users expect from modern IoT devices: no serial cable, no pre-provisioned network credentials, and no Wi-Fi password exposed in the firmware image. It also removes the need for a display or keypad dedicated to network setup, reducing bill-of-materials and industrial-design cost, and lowers support costs since customers can reconfigure Wi-Fi credentials themselves whenever they change routers or relocate the device.</p>
+<h2 id="lab-2-bluetooth-le-audio">Lab 2: Bluetooth® LE Audio<a class="headerlink" href="#lab-2-bluetooth-le-audio" title="Permanent link">&para;</a></h2>
+<h3 id="objective_1">Objective<a class="headerlink" href="#objective_1" title="Permanent link">&para;</a></h3>
+<p>In this lab, you will explore Bluetooth® Low Energy (BLE) Audio using both broadcast source and broadcast sink code examples, with the PSOC™ Edge E84 MCU as the Bluetooth® host and AIROC™ CYW55513 Wi-Fi and Bluetooth® combo chip as the Bluetooth® controller. The source broadcasts audio, and the sink receives, decodes, and plays it through the EVK speaker.</p>
+<blockquote>
+<p><strong>Note:</strong> At DevCon 2026, the presenter will implement and run the broadcast source. Participants will run the broadcast sink and listen to the presenter's audio broadcast. The source example and instructions are included for convenience so participants can reproduce the complete setup at a later time.</p>
+</blockquote>
+<h3 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h3>
+<p>This lab demonstrates Bluetooth® Low Energy (BLE) Audio using the PSOC™ Edge E84 MCU as the Bluetooth® host and the AIROC™ CYW55513 Wi-Fi and Bluetooth® combo device as the Bluetooth® controller. In this architecture, PSOC™ Edge manages the audio application and system control, while CYW55513 provides the underlying Bluetooth radio and controller functionality required for BLE Audio streaming.</p>
+<p><strong>BLE Audio</strong> is increasingly important because it enables high-quality audio with significantly lower power consumption than legacy Bluetooth® Classic audio, making it well-suited for earbuds, hearing aids, wearables, and battery-powered speakers. It also supports advanced capabilities such as multi-stream audio (for improved stereo and seamless earbud switching) and broadcast audio (e.g., Auracast™-style use cases), which allow one transmitter to serve many listeners—something Bluetooth Classic handles less efficiently.</p>
+<p>Compared with Bluetooth® Classic audio, BLE Audio offers:</p>
+<ul>
+<li>Lower energy usage for longer battery life.</li>
+<li>More flexible topologies (multi-stream and broadcast scenarios).</li>
+<li>Better scalability for multi-device and multi-listener environments.</li>
+</ul>
+<p>On the processing side, the lab highlights how Infineon’s <strong>library of audio codecs and signal-processing components</strong> can be used on PSOC™ Edge to implement modern audio pipelines efficiently.</p>
+<p>By leveraging the <strong>Arm® Helium (M-Profile Vector Extension)</strong> support in PSOC™ Edge’s Cortex-M55 core, these codecs and audio algorithms can be vectorized to accelerate operations such as encoding, decoding, filtering, and basic audio effects. This results in higher throughput, lower latency, and reduced CPU loading, leaving more headroom for other tasks such as user interface or machine-learning-based features.</p>
+<p>Through this BLE Audio lab, attendees will learn how to combine PSOC™ Edge E84 and CYW55513 to implement a practical BLE Audio path, and how to take advantage of Infineon’s codec libraries and Helium acceleration to build efficient, low-power wireless audio solutions.</p>
+<h3 id="hardware-diagram_1">Hardware diagram<a class="headerlink" href="#hardware-diagram_1" title="Permanent link">&para;</a></h3>
+<p>Both BLE Audio examples in this lab are intended to run only on the PSOC™ Edge E84 EVK (KIT_PSE84_EVAL_EPC2), not the AI Kit. The lab uses the EVK speaker to play audio on the broadcast sink.</p>
+<p>During DevCon 2026, each participant needs one EVK for the sink; the presenter supplies the source. To run both examples independently after the event, use two EVKs: one for the source and one for the sink. Keep the source powered and broadcasting while testing the sink.</p>
+<p>The main hardware components utilized by this lab are:</p>
+<ul>
+<li>UART: output information to serial terminal</li>
+<li>UART: Bluetooth® channel between PSOC™ Edge and CYW55513</li>
+<li>I2S: speaker driving audio output for sink example</li>
+<li>PDM/PCM: digital microphones for source example</li>
+</ul>
+<p>Below is the hardware block diagram for this example:</p>
+<p><img src="assets/images/image_lab2_evk.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<blockquote>
+<p><strong>Note:</strong> For the KIT_PSE84_EVAL_EPC2 EVK, set BOOT SW to ON. See <a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a>.</p>
+</blockquote>
+<h3 id="code-example-availability">Code example availability<a class="headerlink" href="#code-example-availability" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Note:</strong> The BLE Audio broadcast source and broadcast sink code examples are expected to be published in ModusToolbox™ (MTB) soon. Both examples will be included in the <strong>Lab_Source</strong> folder for DevCon 2026. For the event, use these supplied examples through <strong>Browse for Application</strong>, rather than searching the ModusToolbox™ example catalog.</p>
+</blockquote>
+<p>The supplied examples are in <code>&lt;Lab source&gt;/lab2_ble_audio/psoc-edge-btstack-broadcast-source</code> and <code>&lt;Lab source&gt;/lab2_ble_audio/psoc-edge-btstack-broadcast-sink</code>. These are preview versions for the training; consult their included README files for version-specific requirements.</p>
+<h3 id="optional-run-the-broadcast-source-not-required-for-devcon">Optional: Run the broadcast source (not required for DevCon)<a class="headerlink" href="#optional-run-the-broadcast-source-not-required-for-devcon" title="Permanent link">&para;</a></h3>
+<p>The presenter performs this workflow during DevCon 2026. 
+Participants can proceed directly to <a href="#run-the-broadcast-sink">Run the broadcast sink</a>. These source steps are provided for later use with a second EVK.</p>
+<ol>
+<li>
+<p>Follow <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™</a>, select <strong>KIT_PSE84_EVAL_EPC2</strong>, and click <strong>Browse for Application</strong>. Select <code>&lt;Lab source&gt;/lab2_ble_audio/psoc-edge-btstack-broadcast-source</code>, then select its checkbox and click <strong>Create</strong>
+   <img src="assets/images/image_lab2_source_import.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Open the imported source application in VS Code. Open <strong>Library Manager</strong>, click <strong>Update</strong>, and wait for dependency resolution to complete. The source does <strong>not</strong> require the Audio SW Codecs Tech Pack; optional runtime encoding uses Google liblc3 v1.0.3</p>
+</li>
+<li>[INFO] Open <code>common.mk</code> and observe that <code>ENABLE_LC3_ENCODING=0</code>, which transmits the bundled pre-encoded LC3 audio sample. Also observe that <code>AUDIO_CONFIG=MONO</code> transmits one channel; use the same setting on the sink example</li>
+<li>Select the top-level application in the <strong>ModusToolbox™ for VS Code</strong> extension, and click <strong>Program</strong> to build and program all three projects onto the source EVK</li>
+<li>
+<p>Open a serial terminal at <strong>115200-8-N-1</strong>, then press the kit reset button. Confirm that <code>PSOC Edge MCU: Bluetooth LE Audio Broadcast Source Example</code> appears.
+   Wait for Bluetooth® initialization and automatic broadcasting. The message <code>Audio broadcasting started. Use a Broadcast Sink to listen.</code> confirms transmission, but does not confirm sink synchronization or audible playback. Keep the source EVK powered
+   <img src="assets/images/image_lab2_source_output.gif" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Run the sink workflow below on a separate EVK and listen for the repeating sample through the sink speaker. No pairing, user-button action, or UART playback command is needed on the source. Audio comes from built-in assets, not a microphone, USB audio, or a host file</p>
+</li>
+</ol>
+<h3 id="run-the-broadcast-sink">Run the broadcast sink<a class="headerlink" href="#run-the-broadcast-sink" title="Permanent link">&para;</a></h3>
+<p>During DevCon 2026, use the broadcast source provided by the presenter. When reproducing the lab afterward, start the source on a second EVK using the preceding workflow before verifying sink playback.</p>
+<ol>
+<li>Follow <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™</a>, select <strong>KIT_PSE84_EVAL_EPC2</strong>, and click <strong>Browse for Application</strong>. Select <code>&lt;Lab source&gt;/lab2_ble_audio/psoc-edge-btstack-broadcast-sink</code>, then select its checkbox and click <strong>Create</strong>
+   <img src="assets/images/image_lab2_sink_import.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></li>
+<li>Once the project is imported, open the <strong>Library Manager</strong> by clicking <strong>Configure Middleware</strong> in the <strong>ModusToolbox™ for VS Code</strong> extension</li>
+<li>Click <strong>Add Library</strong>, select <strong>proj_cm55</strong> as the <strong>Target Project</strong>, enable <strong>mtb-pack-audio-sw-codecs</strong> under <strong>Middleware</strong>, and then click <strong>OK</strong></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The ModusToolbox™ Audio SW Codecs Tech Pack needs to be installed as a separate package, as mentioned in the <a href="#required-development-tools-and-prerequisites">Required development tools and prerequisites</a> section. Without the Tech Pack and <code>ENABLE_LC3_DECODING=1</code>, the sink can receive data but will remain silent.</p>
+<p><strong>Note:</strong> Do not confuse the <code>mtb-pack-audio-sw-codecs</code> with <code>audio-sw-codecs</code>. The latter will be added as a dependency automatically, but this example requires both.</p>
+</blockquote>
+<p><img src="assets/images/image_lab2_addlibrary.png" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>Click <strong>Update</strong> in the Library Manager and wait for completion</li>
+<li>
+<p>Open <code>common.mk</code>, set <code>ENABLE_LC3_DECODING=1</code>, and confirm <code>AUDIO_CONFIG=MONO</code> to match the source used for this lab. If using <code>AUDIO_CONFIG=STEREO</code> afterward, set it on both boards and clean, rebuild, and reprogram both applications
+<div class="highlight"><pre><span></span><code>###############################################################################
+# Application-specific settings
+###############################################################################
+
+# Enable/disable LC3 decoding functionality. Options include:
+#
+# 0 -- Disable LC3 decoding (Default) - Works without any additional packs
+# 1 -- Enable LC3 decoding - Requires ModusToolbox Audio SW Codecs Tech Pack
+#
+<span class="gd">-ENABLE_LC3_DECODING=0</span>
+<span class="gi">+ENABLE_LC3_DECODING=1</span>
+
+# Default audio configuration. Options include:
+#
+# MONO   -- Decoding and playback of 1 channel audio. 2nd channel data from
+#           Bluetooth is ignored. (Default)
+# STEREO -- Decoding and playback of 2 channels audio.
+AUDIO_CONFIG=MONO
+</code></pre></div></p>
+</li>
+<li>
+<p>Build and program the top-level application by clicking the <strong>Program</strong> button in the <strong>ModusToolbox™ for VS Code</strong> extension. This builds and programs all three projects</p>
+</li>
+<li>
+<p>After programming completes, open the sink EVK's KitProg3 COM port in the serial terminal, configure the baud rate to 115200-8-N-1, and press the kit reset button.
+   Confirm that <code>PSOC Edge MCU: Bluetooth LE Audio Broadcast Sink Example</code> appears. After Bluetooth® initialization, the terminal prints <code>Broadcast Sink initialized. Scanning for broadcast sources...</code> and the sink scans automatically:</p>
+</li>
+</ol>
+<p><img src="assets/images/image_lab2_sink_output1.gif" alt="Figure" style="width:635px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="8">
+<li>With the presenter's source broadcasting at DevCon 2026, or your second EVK broadcasting afterward, wait for the sink to discover and synchronize to the broadcast automatically. Look for <code>Broadcast audio synchronized.</code> followed by the broadcast ID, and verify that the repeating sample plays through the EVK speaker. This is broadcast reception, not a paired Bluetooth® connection</li>
+</ol>
+<p><img src="assets/images/image_lab2_sink_output2.gif" alt="Figure" style="width:635px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="adjust-the-default-volume">Adjust the default volume<a class="headerlink" href="#adjust-the-default-volume" title="Permanent link">&para;</a></h3>
+<p>The function <code>audio_driver_set_volume</code> can be used to change the output volume of the application.</p>
+<ol>
+<li>
+<p>Open <code>proj_cm55/source/bluetooth/broadcast_sink/broadcast_sink_bis.c</code> and observe that the volume is set in the <code>broadcast_sink_bis_isoc_cb()</code> function:
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Audio configuration: %lu Hz, %lu us, %u bytes/frame, %u BIS</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">p_csc</span><span class="o">-&gt;</span><span class="n">sampling_frequency</span><span class="p">,</span>
+<span class="w">               </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">p_csc</span><span class="o">-&gt;</span><span class="n">frame_duration</span><span class="p">,</span>
+<span class="w">               </span><span class="n">p_csc</span><span class="o">-&gt;</span><span class="n">octets_per_codec_frame</span><span class="p">,</span>
+<span class="w">               </span><span class="n">p_big_sync_established</span><span class="o">-&gt;</span><span class="n">num_bis</span><span class="p">);</span>
+<span class="w">        </span><span class="n">audio_driver_set_volume</span><span class="p">((</span><span class="n">DEFAULT_VOL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Adjust the parameter, or modify <code>DEFAULT_VOL</code>, as shown in the following example:
+<div class="highlight"><pre><span></span><code><span class="gd">-#define DEFAULT_VOL 200   /* default volume 0-255 scale (~78%) */</span>
+<span class="gi">+#define DEFAULT_VOL 100   /* default volume 0-255 scale (~78%) */</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Rebuild the application and reprogram the device. 
+   The application should run again with the updated volume</p>
+</li>
+</ol>
+<h3 id="conclusion_1">Conclusion<a class="headerlink" href="#conclusion_1" title="Permanent link">&para;</a></h3>
+<p>After executing this lab, you demonstrated Bluetooth® Low Energy (BLE) Audio using the PSOC™ Edge E84 MCU as the Bluetooth® host and the AIROC™ CYW55513 Wi-Fi and Bluetooth® combo device as the Bluetooth® controller. You created, built, programmed, and verified the broadcast sink, playing audio through the EVK speaker from the presenter's broadcast source at DevCon 2026. The included broadcast source workflow lets you reproduce both sides of the audio link on two EVKs afterward. Through this exercise, you gained hands-on experience with the BLE Audio software flow, the interaction between the host MCU and the wireless controller, and the ModusToolbox™ tools used to bring up a multi-core, connectivity-enabled application.</p>
+<p>In addition, the sink uses Infineon’s audio codec library for LC3 decoding, while the source can transmit pre-encoded audio or encode the built-in recording with Google liblc3. </p>
+<p>The audio codec library can leverage Arm® Helium, also known as the M-Profile Vector Extension (MVE), on the Cortex-M55 CPU in PSOC™ Edge. Its 128-bit vector operations process multiple samples in parallel, accelerating suitable arithmetic kernels such as multiply-accumulate operations, filtering, and transforms. With a Helium-optimized codec build, less CPU time is needed to decode each audio frame, providing more margin to meet real-time playback deadlines and more headroom for additional audio channels, noise suppression, or machine learning. Helium executes within the CPU; it is not a separate audio accelerator. Faster processing can also enable longer idle periods or a lower CPU clock, potentially reducing energy consumption when the rest of the system permits it.</p>
+<p>BLE Audio's lower power consumption compared to Bluetooth® Classic audio translates directly into longer battery life, or a smaller battery, for earbuds, hearing aids, and other wearable audio products, an important differentiator in a competitive consumer market. Accelerating codec processing with Helium also frees CPU headroom for value-added features such as voice assistants or connectivity housekeeping, without requiring a more expensive, higher-power processor.</p>
+<p>Together, these outcomes provide a solid foundation for extending your design with more advanced BLE Audio features and richer audio processing in your applications.</p>
+<h2 id="lab-3-adding-connectivity-to-machine-learning-with-dual-core-virtual-mqtt-client">Lab 3: Adding connectivity to machine learning with dual-core virtual MQTT client<a class="headerlink" href="#lab-3-adding-connectivity-to-machine-learning-with-dual-core-virtual-mqtt-client" title="Permanent link">&para;</a></h2>
+<h3 id="objective_2">Objective<a class="headerlink" href="#objective_2" title="Permanent link">&para;</a></h3>
+<p>In this lab, you will learn how to add MQTT functionality to a machine learning application running on PSOC™ Edge, and how to leverage the Virtual Connectivity Manager (VCM) to easily enable multi-core support through virtualization.</p>
+<h3 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h3>
+<p>This hands-on lab shows how to build a complete IoT pipeline on an Infineon PSOC™ Edge dual-core MCU. You’ll start from the DEEPCRAFT™ Deploy Motion classification example to run an on-device model, then add <strong>Wi-Fi</strong> and <strong>MQTT</strong> connectivity on the CM33 leveraging the Wi-Fi MQTT Client example. Finally, you’ll introduce Infineon’s <strong>Virtual Connectivity Manager (VCM)</strong> so the AI core (CM55) can publish MQTT messages while the CM33 securely maintains the network stack and broker connection.</p>
+<p><strong>MQTT</strong> is a lightweight publish/subscribe messaging protocol for IoT. Devices (clients) publish messages to topics on a broker; subscribers receive messages for topics they’re interested in. It’s efficient over low-bandwidth links and supports QoS and keep-alive, making it ideal for telemetry like motion classification results.</p>
+<p><strong>VCM</strong> is a middleware layer that virtualizes connectivity across cores. The CM33 owns the Wi-Fi/TCP/IP/TLS/MQTT stack, while other cores (e.g., CM55) call “virtual” connectivity APIs that VCM transparently proxies over inter-processor communication. This keeps the network stack single-owned and thread-safe, while letting the ML core publish as if it had native access.</p>
+<p><strong>Why ModusToolbox™ for ML + connectivity</strong>:</p>
+<ul>
+<li>Unified, curated middleware (Wi-Fi, MQTT, TLS, RTOS, sensors) with the Library Manager for fast integration</li>
+<li>Board Support Packages and dual-core workflows that simplify bring-up and partitioning</li>
+<li>Consistent tooling for device configuration, security assets, and production scaling</li>
+</ul>
+<p>Why <strong>VCM</strong> in a multi-core system:</p>
+<ul>
+<li>Clean separation of concerns: CM55 focuses on inference, CM33 on connectivity</li>
+<li>Single network stack ownership avoids conflicts and reduces memory footprint on the ML core</li>
+<li>Portable, scalable design: additional cores can reuse connectivity without rewriting application logic</li>
+</ul>
+<p>By the end of this hands-on lab, you’ll have a machine learning motion classifier publishing results to the cloud through a robust, production-ready, multi-core architecture.</p>
+<h3 id="hardware-diagram_2">Hardware diagram<a class="headerlink" href="#hardware-diagram_2" title="Permanent link">&para;</a></h3>
+<p>This lab can use the PSOC™ Edge E84 EVK or the PSOC™ Edge E84 AI Kit.</p>
+<p>The main hardware components utilized by this lab are:</p>
+<ul>
+<li>UART: output information to serial terminal</li>
+<li>SDIO: Wi-Fi communication between PSOC™ Edge and CYW55513</li>
+<li><code>USER_LED1</code>: red LED displaying activity</li>
+<li><code>USER_BTN1</code>: button for MQTT Client demo</li>
+<li>I2C: communication with BMI270 6-axis IMU with accelerometer and gyroscope</li>
+</ul>
+<p>Below are the hardware block diagrams for this example using the PSOC™ Edge E84 EVK (top) and PSOC™ Edge E84 AI Kit:</p>
+<p><img src="assets/images/image_lab3_evk.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_lab3_ai.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<blockquote>
+<p><strong>Note:</strong> For the KIT_PSE84_EVAL_EPC2 EVK, set BOOT SW to ON. See <a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a>.</p>
+</blockquote>
+<h3 id="project-creation_1">Project creation<a class="headerlink" href="#project-creation_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Follow the steps in <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™</a> to create a new application.
+   When creating the application, select the <strong>PSOC™ Edge Machine Learning DEEPCRAFT™ Deploy Motion</strong> application under the <strong>Machine Learning</strong> section.
+   The <em>DEEPCRAFT™ Deploy Motion</em> application demonstrates how to deploy an ML model generated using <em>DEEPCRAFT™ Studio</em>. This model was trained to detect motion. This lab is not intended to explain DEEPCRAFT™ Studio or machine learning in detail; it focuses on how to add MQTT functionality to an ML demo. To learn more about machine learning solutions, visit the <a href="https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd">PSOC™ Edge Training Collection</a></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> ModusToolbox™ also includes the <a href="https://github.com/Infineon/mtb-example-psoc-edge-wifi-dual-core-virtual-mqtt-client">mtb-example-psoc-edge-wifi-dual-core-virtual-mqtt-client</a> code example showing how to implement a dual-core MQTT client. This example will be used as a base for this lab; however, the modified source has been included in this training for convenience.</p>
+<p><strong>Warning:</strong> Windows has a 260-character path length limit. A long workspace path and/or a long project name may cause build issues when creating some applications.</p>
+</blockquote>
+<p><img src="assets/images/image_lab3_deepcraft_motion_template.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>After importing the project to Visual Studio Code, build and program the machine learning Deploy Motion application by clicking the <strong>Program</strong> button in the <strong>ModusToolbox™ for VS Code</strong> extension</li>
+</ol>
+<p><img src="assets/images/image_lab3_program_motion_application.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>After the program runs successfully, open the serial terminal and configure the baud rate to 115200-8-N-1. The application will output the score for each motion type: unlabeled, circle, or shaking.
+   While holding the kit, shake the board or move it in a circling motion and observe the results in the terminal</li>
+</ol>
+<p><img src="assets/images/image_lab3_output1.gif" alt="Figure" style="width:467px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p>You have seen how easy it is to run a machine learning demo on PSOC™ Edge. Feel free to visit the <a href="https://www.infineon.com/psocdeveloper/ai-hub">DEEPCRAFT™ AI Hub</a> for more information about other AI solutions from Infineon.</p>
+<h3 id="testing-mqtt-functionality-with-vcm">Testing MQTT functionality with VCM<a class="headerlink" href="#testing-mqtt-functionality-with-vcm" title="Permanent link">&para;</a></h3>
+<p>The machine learning model used in the previous steps is running on the CM55 CPU and the U55 Ethos NPU, while the CM33 CPU is only taking care of initialization, and then stays idle in Deep Sleep. 
+In this section, you will test the dual-core MQTT functionality: the CM33 CPU handles the Wi-Fi and MQTT connection, while the CM55 CPU publishes MQTT messages to the cloud.</p>
+<h4 id="optional-run-a-local-mosquitto-mqtt-broker-not-required-for-devcon">Optional: Run a local Mosquitto MQTT broker (not required for DevCon)<a class="headerlink" href="#optional-run-a-local-mosquitto-mqtt-broker-not-required-for-devcon" title="Permanent link">&para;</a></h4>
+<p>These steps are only needed when replicating the MQTT test on a local bench. They are <strong>not required for the live training at DevCon</strong>; use the broker details and certificates provided by the presenter during the training.</p>
+<ol>
+<li>
+<p>Download and install Mosquitto from <a href="https://mosquitto.org/download">mosquitto.org/download</a>. During setup, do not install Mosquitto as a Windows service. Add the Mosquitto installation directory to the system <code>PATH</code></p>
+</li>
+<li>
+<p>In the Windows Start menu, open <strong>modus-shell</strong>, and then navigate to the following location in the Lab Source folder included with this training:
+    <code>Lab_Source/lab3_ml_vcm/mosquitto_scripts</code></p>
+</li>
+<li>
+<p>Generate TLS certificates using the PC's IPv4 address. Find the address with <code>ipconfig</code>; use the address reachable by the evaluation kit, not <code>localhost</code>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>sh<span class="w"> </span>generate_ssl_cert.sh<span class="w"> </span>&lt;PC-LAN-IPv4-address&gt;
+</code></pre></div></p>
+</li>
+</ol>
+<p><img src="assets/images/image_lab3_mosquitto_1.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>Format the generated CA certificate, client certificate, and client key so they can be added to the C configuration:
+<div class="highlight"><pre><span></span><code><span class="w">   </span>python<span class="w"> </span>format.py<span class="w"> </span>mosquitto_client.crt<span class="w"> </span>mosquitto_client.key<span class="w"> </span>mosquitto_ca.crt
+</code></pre></div></li>
+</ol>
+<p><strong>Note:</strong> The certificates will be saved to local files. The generated strings will be used in the next sections when configuring the client. </p>
+<p><img src="assets/images/image_lab3_mosquitto_2.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="5">
+<li>Open <code>mosquitto.conf</code> in the same <code>mosquitto_scripts</code> folder and adjust the port if needed. The port should not be restricted by your operating system firewall.
+   In this case, use port <strong>50007</strong>, which you will configure on the client in the next section</li>
+</ol>
+<p><img src="assets/images/image_lab3_mosquitto_3.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>Create usernames and passwords for the MQTT broker using the following format:
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mosquitto_passwd<span class="w"> </span>-c<span class="w"> </span>&lt;passwordfile&gt;<span class="w"> </span>&lt;username&gt;
+</code></pre></div></li>
+</ol>
+<p><strong>Note:</strong> A script <code>create_pwfile_users.py</code> is included in the <code>mosquitto_scripts</code> folder to register multiple users. </p>
+<ol start="7">
+<li>In the <code>mosquitto_scripts</code> directory, start Mosquitto with the example configuration:
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mosquitto<span class="w"> </span>-v<span class="w"> </span>-c<span class="w"> </span>mosquitto.conf
+</code></pre></div></li>
+</ol>
+<p>Leave this terminal open while testing MQTT. Ensure the PC and evaluation kit are connected to the same network.</p>
+<p><img src="assets/images/image_lab3_mosquitto_4.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="8">
+<li>[INFO] Tools such as MQTT Explorer can be used to observe MQTT messages in a graphical interface. <br />
+   The presenter will be running MQTT Explorer to show messages during the session</li>
+</ol>
+<p><img src="assets/images/image_lab3_mqtt_explorer.png" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h4 id="adding-mqtt-broker-support-to-the-deepcrafttm-deploy-motion-example">Adding MQTT broker support to the DEEPCRAFT™ Deploy Motion example<a class="headerlink" href="#adding-mqtt-broker-support-to-the-deepcrafttm-deploy-motion-example" title="Permanent link">&para;</a></h4>
+<p>The following steps explain how to add Wi-Fi and MQTT support to the previously created DEEPCRAFT™ Deploy Motion example.
+ModusToolbox™ includes the <strong><a href="https://github.com/Infineon/mtb-example-psoc-edge-wifi-dual-core-virtual-mqtt-client">mtb-example-psoc-edge-wifi-dual-core-virtual-mqtt-client</a></strong> code example showing how to implement a dual-core MQTT client. This example will be used as a base for this lab; however, the example utilizes the CM55 core to handle the Wi-Fi and MQTT connection, while in this lab, the CM33 core is used for that purpose. It is recommended that you visit and test the code example at your own pace; however, this lab includes modified source for your convenience.</p>
+<ol>
+<li>Open the previously created <strong>PSOC™ Edge Machine Learning DEEPCRAFT™ Deploy Motion</strong> code example in Visual Studio Code</li>
+<li>Click the <strong>Configure Middleware</strong> button in the <strong>ModusToolbox™ for VS Code</strong> extension to open the Library Manager</li>
+</ol>
+<p><img src="assets/images/image_lab3_libmgr_1.png" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>
+<p>Click the <strong>Add Library</strong> button and add the following libraries for both the <strong>proj_cm33_ns</strong> and <strong>proj_cm55</strong> projects. Click <strong>Update</strong>, wait for the libraries to be updated in the project, and then close the <strong>Library Manager</strong>:</p>
+<ul>
+<li>freertos</li>
+<li>mqtt</li>
+<li>virtual-connectivity-manager</li>
+<li>wifi-core-freertos-lwip-mbedtls</li>
+</ul>
+</li>
+<li>
+<p>Copy the following folder from the Lab Source folder included with this training to your project:
+   <code>Lab_Source/lab3_ml_vcm/mod1-add-mqtt-vcm</code></p>
+</li>
+</ol>
+<p>Files from <code>mod1-add-mqtt-vcm</code> should be added or overwrite existing files, but other files should remain untouched in your VS Code project. You can use the following command in modus-shell:
+<div class="highlight"><pre><span></span><code><span class="w">   </span>cp<span class="w"> </span>-rf<span class="w"> </span>&lt;Lab_Source&gt;/lab3_ml_vcm/mod1-add-mqtt-vcm/*<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>project&gt;
+</code></pre></div></p>
+<p><img src="assets/images/image_lab3_add_mqtt.png" alt="Figure" style="width:400px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="5">
+<li>Open <code>mtb_shared/wifi-host-driver/release-&lt;version&gt;/generated_mac_address.txt</code> and <code>NVRAM_GENERATED_MAC_ADDRESS</code> to assign a MAC address</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> This step is optional when testing one device, but it is necessary when connecting multiple EVKs to the same router. CYW55513 contains OTP bits which are programmed during production by the OEM or module partner. The OTP bits are not programmed in the EVK, so the device reads the MAC address from the file above, or you can program the OTP bits using APIs.</p>
+</blockquote>
+<ol start="6">
+<li>Open <code>proj_cm33_ns/configs/wifi_config.h</code> and modify the Wi-Fi settings. The following table shows the values for the DevCon 2026 event</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>DevCon 2026 demo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WIFI_SSID</code></td>
+<td>GL-PSOCEdge</td>
+</tr>
+<tr>
+<td><code>WIFI_PASSWORD</code></td>
+<td>PSE84WiFi</td>
+</tr>
+<tr>
+<td><code>WIFI_SECURITY_TYPE</code></td>
+<td><code>CY_WCM_SECURITY_WPA2_AES_PSK</code></td>
+</tr>
+</tbody>
+</table>
+<ol start="7">
+<li>Open <code>proj_cm33_ns/configs/mqtt_client_config.h</code> and modify the following MQTT parameters:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>DevCon 2026 demo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MQTT_BROKER_ADDRESS</code></td>
+<td>“192.168.8.213”</td>
+</tr>
+<tr>
+<td><code>MQTT_PORT</code></td>
+<td>50007</td>
+</tr>
+<tr>
+<td><code>MQTT_SECURE_CONNECTION</code></td>
+<td>( 1 )</td>
+</tr>
+<tr>
+<td><code>MQTT_USERNAME</code></td>
+<td>Check the username with the presenter (e.g., “user1”)</td>
+</tr>
+<tr>
+<td><code>MQTT_PASSWORD</code></td>
+<td>“pwd”</td>
+</tr>
+<tr>
+<td><code>MQTT_PUB_TOPIC</code></td>
+<td>Use your own topic (e.g., “<code>ledstatus_yourname</code>”)</td>
+</tr>
+<tr>
+<td><code>MQTT_SUB_TOPIC</code></td>
+<td>Use your own topic (e.g., “<code>ledstatus_yourname</code>”)</td>
+</tr>
+</tbody>
+</table>
+<p>In the same <code>proj_cm33_ns/mqtt_client_config.h</code> file, copy the following certificates to the corresponding macros:</p>
+<blockquote>
+<p><strong>Note:</strong> These certificates were created for training purposes because the presenter runs the MQTT broker. It is not necessary to create your own certificates for this training; however, you can create certificates by following the instructions in <a href="#optional-run-a-local-mosquitto-mqtt-broker-not-required-for-devcon">Optional: Run a local Mosquitto MQTT broker</a>.</p>
+</blockquote>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#define CLIENT_CERTIFICATE \</span>
+<span class="cp">&quot;-----BEGIN CERTIFICATE-----\n&quot;\</span>
+<span class="cp">&quot;MIIDYTCCAkkCFENMHBIB1iyLJ6fEvC6CenvSEglvMA0GCSqGSIb3DQEBCwUAMGcx\n&quot;\</span>
+<span class="cp">&quot;CzAJBgNVBAYTAklOMRIwEAYDVQQIDAlLYXJuYXRha2ExEjAQBgNVBAcMCUJlbmdh\n&quot;\</span>
+<span class="cp">&quot;bHVydTELMAkGA1UECgwCQ1kxFDASBgNVBAsMC0VuZ2luZWVyaW5nMQ0wCwYDVQQD\n&quot;\</span>
+<span class="cp">&quot;DARteUNBMB4XDTI2MTAwMjIxNDg1NloXDTM2MDkyOTIxNDg1NlowczELMAkGA1UE\n&quot;\</span>
+<span class="cp">&quot;BhMCSU4xEjAQBgNVBAgMCUthcm5hdGFrYTESMBAGA1UEBwwJQmVuZ2FsdXJ1MQsw\n&quot;\</span>
+<span class="cp">&quot;CQYDVQQKDAJDWTEUMBIGA1UECwwLRW5naW5lZXJpbmcxGTAXBgNVBAMMEG1vc3F1\n&quot;\</span>
+<span class="cp">&quot;aXR0b19jbGllbnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC2UmRQ\n&quot;\</span>
+<span class="cp">&quot;kZ37uZ2H7Xg9o8YarXl1ODufGUURyrvyhE8DZWwDQY/iVBVyGWJRVcaHeZiI+tsI\n&quot;\</span>
+<span class="cp">&quot;lLhWmpcBVh+7bjESnV7Edpm27/Lj/7/dVZWhJUNNwRiJIAbx0ogmtXp6EKSZ5vym\n&quot;\</span>
+<span class="cp">&quot;ltmSqzCJ980q2H+UoifaI/xkPt5ZJr1QocpzL2YLWC4J0RBlZkWVOcaBDdMgOfTz\n&quot;\</span>
+<span class="cp">&quot;4U397zLbWva1dI3g5b7Hk8LC6OR0EtqCexfGFUf8sYWcI5gcvx2LsmBBS7y/UEBH\n&quot;\</span>
+<span class="cp">&quot;tV2pYPdIP1/u0Y5nDxzLHfKet1ocG/AFwef+AYmL1sKKzEt0SchiiYGmgHfoEGsR\n&quot;\</span>
+<span class="cp">&quot;1HmOuB6s9UVBId9vAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAJugA+Gta1/bWbOV\n&quot;\</span>
+<span class="cp">&quot;bK2ZPPtfMgV1fUCpr7jbk4kWLddjsBNZ6fWlNtdracierE8FUZxv2he89efUp3NS\n&quot;\</span>
+<span class="cp">&quot;N0FZPqwMTCs+f+Tey0PDKlZrReE8hwNzNJR7vdVXWhVjYVwbcLKmGVnh6zayhBm+\n&quot;\</span>
+<span class="cp">&quot;EI0UxvzcxR56/JMS+3RKbhmNI7CxCFkFbQoEH+qK9lWP/QQfo1Xks/8OpmMjZGqL\n&quot;\</span>
+<span class="cp">&quot;x9UgcjWwIJH8LStIVzvxfAPegHnm3u/E6ZkeXqZ5Kd6odvQZjnbNeV9QI7zrMzi0\n&quot;\</span>
+<span class="cp">&quot;7fqMT67i3Ms9Hzr9sL/H2vrPCsdeHHHsS3Yo/OSHUqUEItKgkjGBCGLhY1JXBNIX\n&quot;\</span>
+<span class="cp">&quot;bde8Dt8=\n&quot;\</span>
+<span class="cp">&quot;-----END CERTIFICATE-----\n&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">#define CLIENT_PRIVATE_KEY \</span>
+<span class="cp">&quot;-----BEGIN PRIVATE KEY-----\n&quot;\</span>
+<span class="cp">&quot;MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC2UmRQkZ37uZ2H\n&quot;\</span>
+<span class="cp">&quot;7Xg9o8YarXl1ODufGUURyrvyhE8DZWwDQY/iVBVyGWJRVcaHeZiI+tsIlLhWmpcB\n&quot;\</span>
+<span class="cp">&quot;Vh+7bjESnV7Edpm27/Lj/7/dVZWhJUNNwRiJIAbx0ogmtXp6EKSZ5vymltmSqzCJ\n&quot;\</span>
+<span class="cp">&quot;980q2H+UoifaI/xkPt5ZJr1QocpzL2YLWC4J0RBlZkWVOcaBDdMgOfTz4U397zLb\n&quot;\</span>
+<span class="cp">&quot;Wva1dI3g5b7Hk8LC6OR0EtqCexfGFUf8sYWcI5gcvx2LsmBBS7y/UEBHtV2pYPdI\n&quot;\</span>
+<span class="cp">&quot;P1/u0Y5nDxzLHfKet1ocG/AFwef+AYmL1sKKzEt0SchiiYGmgHfoEGsR1HmOuB6s\n&quot;\</span>
+<span class="cp">&quot;9UVBId9vAgMBAAECggEAWBH1riuhJmszqujtl8zoUZOxo4t91W0l/aGyZ0Q9TLUt\n&quot;\</span>
+<span class="cp">&quot;12bQo7IdR+f2I7bs9x0oLycKLht07jSvs/AP1QC2CLlnAT0PJJzE9hjg7AA/DsAK\n&quot;\</span>
+<span class="cp">&quot;wmD/wqFraV3a8ePhHVyzvjojmi8tO1mhUUwX2dYJztkDqi6O6TerPWJmua/ltPyD\n&quot;\</span>
+<span class="cp">&quot;BF+O+WeU/mV4/pH4DNJ/vfghDcWjNwnquc0kb2qKa336ZQSVLFCdR+LMWg85rptr\n&quot;\</span>
+<span class="cp">&quot;6YimoDArlYO/1ZAWDIY0wHWjXOZe9OErCwuXNbg+jdn8QdJjcmpyjda9wBNenuAs\n&quot;\</span>
+<span class="cp">&quot;df8RcH1kylx+Q/QsKfAorpAv118fjNMnn0AW1Hb9uQKBgQDwWmF5n1V33Iq2Hjgn\n&quot;\</span>
+<span class="cp">&quot;KVFpVXL56lRkxE7E3EXZDCuSiRtNU/gYjDLXQF9xQmgk8wsWrngfMXAWFOQQQgTa\n&quot;\</span>
+<span class="cp">&quot;mORUu4nnNwLCpcUbes0KJ1o8WSRvxLI7+lKVhIrIunc4ffsLPzZtQZM6EuHq7f9C\n&quot;\</span>
+<span class="cp">&quot;5yrzbjQ6Vknhd04VEFfUldG1pwKBgQDCMONmOz6oCm3CD+QW4TsxlS4+5XqUNKod\n&quot;\</span>
+<span class="cp">&quot;f0BYO0/t8oHvnz5HpL4VtHhuESWqvPiE7+HH7w86OYMyYNem8fo0CogxK3+oSUDU\n&quot;\</span>
+<span class="cp">&quot;NBeZDX757SVIQ6Buea5qnFXvWUnhHPd+fv4/MGYH6LlJmu5x0jezjuPn3DL/Rroa\n&quot;\</span>
+<span class="cp">&quot;WQBrOfxQ+QKBgQDPMwsO3vW+I6iMwVZlJDBjnt9EZOcmCzlgagfoyZ4ScBHSQs4A\n&quot;\</span>
+<span class="cp">&quot;03PMrljY+YdwOvlXL0aslWDsGExXW6J1lBJanWWPppPBm0hlnSJ/W1dl6O8JT0bb\n&quot;\</span>
+<span class="cp">&quot;f7uL27wMuPqn/6rYkkDoRPyXtsl9Tnicg046lsl9dP+x17i/XdxpjlI/xwKBgGlS\n&quot;\</span>
+<span class="cp">&quot;jLNQ5K3NYjRD3CjQpgNBbyCr4+zoF3ACKYrxOGvNAM5PJz9CSdqJ1FuWL0DIV136\n&quot;\</span>
+<span class="cp">&quot;oRGIRlEFCnRTdANW8KYzJCTO++DxQhkV28qmOD0jcvobu7LPilrGShGT8u8Gf/F6\n&quot;\</span>
+<span class="cp">&quot;vTjWbjBR99TFFBhltNJNaKzDkGFGIf/ST9jYTVI5AoGBAM56Qq8f/gGxh4+wQ4HQ\n&quot;\</span>
+<span class="cp">&quot;hlua75zpqpAOkeC11X7kMgexWOWwPUyR1dh8MJGPxCz69+gb/BaVE5EOYgB0jySi\n&quot;\</span>
+<span class="cp">&quot;8jVmy3KYeIaeR9bgYWcgHVrvB4BlmTYE8tR0FOnsSOLbNH5zX4EehbRc67H4oSYY\n&quot;\</span>
+<span class="cp">&quot;JrzrJfbEfSL+jHlU8K+2HL7O\n&quot;\</span>
+<span class="cp">&quot;-----END PRIVATE KEY-----\n&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">#define ROOT_CA_CERTIFICATE \</span>
+<span class="cp">&quot;-----BEGIN CERTIFICATE-----\n&quot;\</span>
+<span class="cp">&quot;MIIDrzCCApegAwIBAgIUcX4wui1JiAYhvFCjeucFygRIm9EwDQYJKoZIhvcNAQEL\n&quot;\</span>
+<span class="cp">&quot;BQAwZzELMAkGA1UEBhMCSU4xEjAQBgNVBAgMCUthcm5hdGFrYTESMBAGA1UEBwwJ\n&quot;\</span>
+<span class="cp">&quot;QmVuZ2FsdXJ1MQswCQYDVQQKDAJDWTEUMBIGA1UECwwLRW5naW5lZXJpbmcxDTAL\n&quot;\</span>
+<span class="cp">&quot;BgNVBAMMBG15Q0EwHhcNMjYxMDAyMjE0ODUyWhcNMzYwOTI5MjE0ODUyWjBnMQsw\n&quot;\</span>
+<span class="cp">&quot;CQYDVQQGEwJJTjESMBAGA1UECAwJS2FybmF0YWthMRIwEAYDVQQHDAlCZW5nYWx1\n&quot;\</span>
+<span class="cp">&quot;cnUxCzAJBgNVBAoMAkNZMRQwEgYDVQQLDAtFbmdpbmVlcmluZzENMAsGA1UEAwwE\n&quot;\</span>
+<span class="cp">&quot;bXlDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOFl1F4kJcLcrbYn\n&quot;\</span>
+<span class="cp">&quot;mA775zElKAxdaEGu0Zf/5UR711CSrabV6U9c5FkehEYCKJDgs+ktKowqyDCE4bJq\n&quot;\</span>
+<span class="cp">&quot;G1WKiY8rg7zKoCR7G1B+mfIFvdHVQW1CciNDQm/R6GTS7EEfaLO3xgeU8naae+Ad\n&quot;\</span>
+<span class="cp">&quot;EtMT0EXrD3BXMPFfqnNWqznhUPH4tANlVLPZs4DJuPVCd5QQ4HrI3mtmAXClmzFs\n&quot;\</span>
+<span class="cp">&quot;zGGaZ07qGPTx87kJHLAJLb1YYjfdFGQtida0JRHVNECPihxzAjB+fMdE3xj3mah1\n&quot;\</span>
+<span class="cp">&quot;oJw5jHhb4Pm/k8xV7aZSo4JeCIX+ZMzOp0vDq1LUtdoJ7C8p1+P55cnkf1YX9yRf\n&quot;\</span>
+<span class="cp">&quot;Igw3/XcCAwEAAaNTMFEwHQYDVR0OBBYEFIsFlffM9NOa1XTNn+Rh6cTLdsGeMB8G\n&quot;\</span>
+<span class="cp">&quot;A1UdIwQYMBaAFIsFlffM9NOa1XTNn+Rh6cTLdsGeMA8GA1UdEwEB/wQFMAMBAf8w\n&quot;\</span>
+<span class="cp">&quot;DQYJKoZIhvcNAQELBQADggEBALWbZYwZsmKhdqyeAzPM0ScaA3ZBueT4RDpytqcF\n&quot;\</span>
+<span class="cp">&quot;8FK5X7HAh+kfaifwiboNZTzy09kZAQXfvJaMVMuV/dkVYsmkgAAWgiIsOzLQ/eYn\n&quot;\</span>
+<span class="cp">&quot;qSJgEDjuNVnKuFOOR2x4g2GC8T1aIi5HKYxj+RUcoRuGxQPYq7831paa2XZUPafh\n&quot;\</span>
+<span class="cp">&quot;q1Q5ossPshSCAe304X8E7COIs8N9SHx4BG+gaop/uq7+0gYQeNbnADI2vuB8cks4\n&quot;\</span>
+<span class="cp">&quot;if7OeeTG8UXsfgZCIqbuQIrdxVtP4HZDfuf7aMeELCRK3L/hgLZ6dGOro+Dj9hjM\n&quot;\</span>
+<span class="cp">&quot;LULMWRYfbrfywzLrvJgcQb5sbTLSjmY92cma6jK5YpUYYA0=\n&quot;\</span>
+<span class="cp">&quot;-----END CERTIFICATE-----\n&quot;</span>
+</code></pre></div></p>
+<ol start="8">
+<li>
+<p>Open <code>proj_cm33_ns/main.c</code> and look for <code>TODO 1</code>.
+   Call <code>cy_vcm_init</code> to initialize VCM on CM33 before booting the CM55 CPU. Observe that the CM33 acts as the primary core, so it creates the resource, and both CPUs use Inter-Processor Communication (IPC) to exchange packets
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="cm">/* TODO 1: Initialize VCM before booting CM55. CM33 boots first, so it</span>
+<span class="cm">     * creates the IPC resources that CM55 uses.</span>
+<span class="cm">     *  - Fill in primary_core_config: ipc_obj = &amp;cybsp_cm33_ipc_instance,</span>
+<span class="cm">     *    hal_resource_opt = CY_VCM_CREATE_HAL_RESOURCE,</span>
+<span class="cm">     *    channel_num = MTB_IPC_CHAN_1, event_cb = vcm_callback.</span>
+<span class="cm">     *  - Call cy_vcm_init() and call handle_app_error() if it fails.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">primary_core_config</span><span class="p">.</span><span class="n">ipc_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cybsp_cm33_ipc_instance</span><span class="p">;</span>
+<span class="w">    </span><span class="n">primary_core_config</span><span class="p">.</span><span class="n">hal_resource_opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CY_VCM_CREATE_HAL_RESOURCE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">primary_core_config</span><span class="p">.</span><span class="n">channel_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MTB_IPC_CHAN_1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">primary_core_config</span><span class="p">.</span><span class="n">event_cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vcm_callback</span><span class="p">;</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cy_vcm_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">primary_core_config</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* VCM Initialization failed. Stop program execution */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CY_RSLT_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">handle_app_error</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Enable CM55. */</span>
+<span class="w">    </span><span class="cm">/* CY_CM55_APP_BOOT_ADDR must be updated if CM55 memory layout is changed.*/</span>
+<span class="w">    </span><span class="n">Cy_SysEnableCM55</span><span class="p">(</span><span class="n">MXCM55</span><span class="p">,</span><span class="w"> </span><span class="n">CM55_APP_BOOT_ADDR</span><span class="p">,</span><span class="w"> </span><span class="n">CM55_BOOT_WAIT_TIME_USEC</span><span class="p">);</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Open <code>proj_cm55/source/virtual_mqtt_task.c</code> and look for <code>TODO 2</code> and <code>TODO 3</code>.
+   Initialize VCM for the CM55, which acts as the secondary core, so it uses the resource created by the CM33 CPU
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="cm">/* TODO 2: Initialize VCM on CM55. CM33 created the IPC resources before</span>
+<span class="cm">     * booting CM55, so CM55 uses them.</span>
+<span class="cm">     *  - Fill in secondary_core_config: ipc_obj = &amp;cybsp_cm55_ipc_instance,</span>
+<span class="cm">     *    hal_resource_opt = CY_VCM_USE_HAL_RESOURCE,</span>
+<span class="cm">     *    channel_num = MTB_IPC_CHAN_1, event_cb = vcm_callback.</span>
+<span class="cm">     *  - Call cy_vcm_init() and store the return value in &#39;result&#39; (replace</span>
+<span class="cm">     *    the placeholder below).</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">secondary_core_config</span><span class="p">.</span><span class="n">ipc_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cybsp_cm55_ipc_instance</span><span class="p">;</span>
+<span class="w">    </span><span class="n">secondary_core_config</span><span class="p">.</span><span class="n">hal_resource_opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CY_VCM_USE_HAL_RESOURCE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">secondary_core_config</span><span class="p">.</span><span class="n">channel_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MTB_IPC_CHAN_1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">secondary_core_config</span><span class="p">.</span><span class="n">event_cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vcm_callback</span><span class="p">;</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cy_vcm_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">secondary_core_config</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CY_RSLT_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">safe_print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">VCM Initialization failed on CM55.</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">vTaskDelete</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">safe_print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Virtual Connectivity Manager Initialized on CM55</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* TODO 3: Wait until CM33 signals that the MQTT connection is ready:</span>
+<span class="cm">     * while Cy_IPC_Sema_Status(MQTT_READY_SEMA_NUM) returns</span>
+<span class="cm">     * CY_IPC_SEMA_STATUS_UNLOCKED, call vTaskDelay(pdMS_TO_TICKS(WAIT_DELAY_MS)).</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">safe_print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Please wait until MQTT is connected on CM33...</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">CY_IPC_SEMA_STATUS_UNLOCKED</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Cy_IPC_Sema_Status</span><span class="p">(</span><span class="n">MQTT_READY_SEMA_NUM</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="n">WAIT_DELAY_MS</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Build and program the updated project.
+   The terminal will continue showing the results of the machine learning motion detection model, but it will also show the information about the Wi-Fi connection and then the connection to the MQTT broker.
+   Once connected, press <strong>USER_BTN1</strong> to toggle the status of the LED and publish it to the MQTT broker</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The MQTT broker must be running as described in <a href="#optional-run-a-local-mosquitto-mqtt-broker-not-required-for-devcon">Optional: Run a local Mosquitto broker</a>. An MQTT viewer, such as MQTT Explorer, can be used to observe and send messages.</p>
+</blockquote>
+<p><img src="assets/images/image_lab3_mod1_results.gif" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="publish-the-machine-learning-results-via-mqtt">Publish the machine learning results via MQTT<a class="headerlink" href="#publish-the-machine-learning-results-via-mqtt" title="Permanent link">&para;</a></h3>
+<p>You have now combined the functionality of <strong>PSOC™ Edge Machine Learning DEEPCRAFT™ Deploy Motion</strong> and a modified version of <strong>PSOC™ Edge MCU: Dual-core virtual MQTT client</strong> to use the CM33 CPU to handle the Wi-Fi and MQTT connection, while the CM55 runs machine learning inferences. 
+Now, modify the example to send machine learning results using the virtual MQTT connection.</p>
+<ol>
+<li>
+<p>Open <code>proj_cm55/source/publisher_task.h</code> and add the following code to define a new command and function to publish the inference results</p>
+<ul>
+<li>Modification #1, add <code>PUBLISH_INFERENCE_RESULT</code> definition:
+<div class="highlight"><pre><span></span><code><span class="cm">/* Commands for the Publisher Task. */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">enum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">PUBLISH_MQTT_MSG</span><span class="p">,</span>
+<span class="w">    </span><span class="n">PUBLISH_INFERENCE_RESULT</span><span class="w"> </span>
+<span class="p">}</span><span class="w"> </span><span class="n">publisher_cmd_t</span><span class="p">;</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Modification #2, add the prototype for <code>publisher_publish_inference_result</code>:
+<div class="highlight"><pre><span></span><code><span class="cm">/*******************************************************************************</span>
+<span class="cm">* Function Prototypes</span>
+<span class="cm">*******************************************************************************/</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">publisher_task</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvParameters</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">publisher_button_interrupt_handler</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="o">+</span><span class="n">BaseType_t</span><span class="w"> </span><span class="n">publisher_publish_inference_result</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">status</span><span class="p">);</span>
+</code></pre></div></li>
+</ul>
+<ol start="2">
+<li>
+<p>Open <code>proj_cm55/source/publisher_task.c</code> and add the following code to handle the new task to publish the inference results.
+   Customize your topic as needed</p>
+<ul>
+<li>Modification #1, add definition for <code>INFERENCE_RESULT_TOPIC</code>:
+<div class="highlight"><pre><span></span><code><span class="cm">/*******************************************************************************</span>
+<span class="cm">* Macros</span>
+<span class="cm">*******************************************************************************/</span>
+<span class="cm">/* Queue length of a message queue that is used to communicate with the</span>
+<span class="cm"> * publisher task.</span>
+<span class="cm"> */</span>
+<span class="cp">#define PUBLISHER_TASK_QUEUE_LENGTH     (3U)</span>
+
+<span class="cm">/* Publisher topic used for secondary core (CM55). CM33 subscribes to it. */</span>
+<span class="cp">#define SECONDARY_PUB_TOPIC             &quot;GREEN_APP_STATUS&quot; </span><span class="cm">/* Customize your topic */</span>
+<span class="cp">#define INFERENCE_RESULT_TOPIC          &quot;ML_INFERENCE_RESULT&quot; </span><span class="cm">/* Customize your topic */</span>
+
+<span class="cm">/* Button presses closer than this are treated as switch bounce. */</span>
+<span class="cp">#define DEBOUNCE_TIME_MS                (200U)</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>
+<p>Modification #2, define global variables for <code>inference_publish_info</code>:
+<div class="highlight"><pre><span></span><code><span class="cm">/*******************************************************************************</span>
+<span class="cm">* Global Variables</span>
+<span class="cm">*******************************************************************************/</span>
+<span class="cm">/* MQTT publish settings for inference status updates. */</span>
+<span class="k">static</span><span class="w"> </span><span class="n">cy_mqtt_publish_info_t</span><span class="w"> </span><span class="n">inference_publish_info</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">qos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">cy_mqtt_qos_t</span><span class="p">)</span><span class="w"> </span><span class="n">MQTT_MESSAGES_QOS</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INFERENCE_RESULT_TOPIC</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">topic_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">INFERENCE_RESULT_TOPIC</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="p">.</span><span class="n">retain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">dup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="p">};</span>
+
+<span class="cm">/* FreeRTOS task handle for this task. */</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Modification #3, define <code>publisher_publish_inference_result</code> function:
+<div class="highlight"><pre><span></span><code><span class="cm">/* Queue a changed inference status for the publisher task. */</span>
+<span class="n">BaseType_t</span><span class="w"> </span><span class="nf">publisher_publish_inference_result</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">status</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">publisher_data_t</span><span class="w"> </span><span class="n">publisher_q_data</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">publisher_task_q</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">status</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pdFALSE</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">publisher_q_data</span><span class="p">.</span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PUBLISH_INFERENCE_RESULT</span><span class="p">;</span>
+<span class="w">    </span><span class="n">publisher_q_data</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">status</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">xQueueSend</span><span class="p">(</span><span class="n">publisher_task_q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">publisher_q_data</span><span class="p">,</span><span class="w"> </span><span class="mi">0U</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/*******************************************************************************</span>
+<span class="cm">* Function Name: publisher_task</span>
+<span class="cm">********************************************************************************</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Modification #4, modify <code>publisher_task</code> to handle both MQTT topics:
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">publisher_task</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pvParameters</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Status variable */</span>
+<span class="w">    </span><span class="n">cy_rslt_t</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">publisher_data_t</span><span class="w"> </span><span class="n">publisher_q_data</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Command to the Virtual MQTT task */</span>
+<span class="w">    </span><span class="n">virtual_mqtt_task_cmd_t</span><span class="w"> </span><span class="n">virtual_mqtt_task_cmd</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cy_mqtt_publish_info_t</span><span class="w"> </span><span class="o">*</span><span class="n">publish_info</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* To avoid compiler warnings */</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="n">pvParameters</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Create a message queue to communicate with the button interrupt. */</span>
+<span class="w">    </span><span class="n">publisher_task_q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xQueueCreate</span><span class="p">(</span><span class="n">PUBLISHER_TASK_QUEUE_LENGTH</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">publisher_data_t</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">safe_print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Press the user button (SW1) to publish </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s">/</span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s"> on the topic &#39;%s&#39;...</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="n">ON_MESSAGE</span><span class="p">,</span><span class="w"> </span><span class="n">OFF_MESSAGE</span><span class="p">,</span><span class="w"> </span><span class="n">secondary_publish_info</span><span class="p">.</span><span class="n">topic</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/* Wait for commands from the button interrupt. */</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pdTRUE</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">xQueueReceive</span><span class="p">(</span><span class="n">publisher_task_q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">publisher_q_data</span><span class="p">,</span><span class="w"> </span><span class="n">portMAX_DELAY</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">switch</span><span class="p">(</span><span class="n">publisher_q_data</span><span class="p">.</span><span class="n">cmd</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">PUBLISH_MQTT_MSG</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">publish_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">secondary_publish_info</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">PUBLISH_INFERENCE_RESULT</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">publish_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inference_publish_info</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                    </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="n">publish_info</span><span class="o">-&gt;</span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">publisher_q_data</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
+<span class="w">            </span><span class="n">publish_info</span><span class="o">-&gt;</span><span class="n">payload_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">publish_info</span><span class="o">-&gt;</span><span class="n">payload</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">safe_print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Publisher(m55): Publishing &#39;%s&#39; on the topic &#39;%s&#39;</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                       </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">publish_info</span><span class="o">-&gt;</span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="n">publish_info</span><span class="o">-&gt;</span><span class="n">topic</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cy_mqtt_publish</span><span class="p">(</span><span class="n">virtual_mqtt_connection</span><span class="p">,</span><span class="w"> </span><span class="n">publish_info</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CY_RSLT_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">safe_print</span><span class="p">(</span><span class="s">&quot;  Publisher: MQTT Publish failed with error 0x%0X.</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                           </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">result</span><span class="p">);</span>
+
+<span class="w">                </span><span class="cm">/* Communicate the publish failure with the Virtual MQTT task. */</span>
+<span class="w">                </span><span class="n">virtual_mqtt_task_cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HANDLE_VIRTUAL_MQTT_PUBLISH_FAILURE</span><span class="p">;</span>
+<span class="w">                </span><span class="n">xQueueSend</span><span class="p">(</span><span class="n">virtual_mqtt_task_data_q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">virtual_mqtt_task_cmd</span><span class="p">,</span><span class="w"> </span><span class="n">portMAX_DELAY</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+</ul>
+<ol start="3">
+<li>
+<p>Lastly, perform the following modifications to <code>imu_data_process()</code> in <code>proj_cm55/imu.c</code> to publish the inference results when a change is detected</p>
+<ul>
+<li>Modification #1, add local static variable <code>last_queued_inference_label</code>:
+<div class="highlight"><pre><span></span><code>cy_rslt_t imu_data_process(void)
+{
+<span class="w"> </span>   /* Variables required to get the IMU data and process the results. */
+<span class="w"> </span>   cy_rslt_t result = CY_RSLT_SUCCESS;
+<span class="w"> </span>   float label_scores[IMAI_DATA_OUT_COUNT];
+<span class="w"> </span>   char *label_text[] = IMAI_DATA_OUT_SYMBOLS;
+<span class="w"> </span>   int16_t best_label;
+<span class="w"> </span>   float max_score;
+<span class="w"> </span>   uint16_t fifo_length = 0;
+#ifdef IMU_ACC
+<span class="w"> </span>   uint16_t accel_frame_length;
+#endif /* IMU_ACC */
+#ifdef IMU_GYR
+<span class="w"> </span>   uint16_t gyro_frame_length;
+#endif /* IMU_GYR */
+<span class="w"> </span>   uint16_t int_status = 0;
+<span class="w"> </span>   uint16_t watermark = 0;
+<span class="w"> </span>   uint16_t index = 0;
+<span class="gi">+    static int16_t last_queued_inference_label = -1;</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Modification #2, publish the result when the inference result changes:
+<div class="highlight"><pre><span></span><code><span class="w"> </span>            /* Check if there is any model output */
+<span class="w"> </span>           switch(IMAI_dequeue(label_scores))
+<span class="w"> </span>           {
+<span class="w"> </span>               /* On success, print the labels with their scores */
+<span class="w"> </span>               case IMAI_RET_SUCCESS:
+<span class="w"> </span>               {
+<span class="w"> </span>                   for(int i = 0; i &lt; IMAI_DATA_OUT_COUNT; i++)
+<span class="w"> </span>                   {
+<span class="w"> </span>                       printf(&quot;label: %-10s: score: %f\r\n&quot;, label_text[i],
+<span class="w"> </span>                              label_scores[i]);
+<span class="w"> </span>                       if (label_scores[i] &gt; max_score)
+<span class="w"> </span>                       {
+<span class="w"> </span>                           max_score = label_scores[i];
+<span class="w"> </span>                           best_label = i;
+<span class="w"> </span>                       }
+<span class="w"> </span>                   }
+
+<span class="gi">+                    if (best_label != last_queued_inference_label)</span>
+<span class="gi">+                    {</span>
+<span class="gi">+                        if (pdPASS == publisher_publish_inference_result(label_text[best_label]))</span>
+<span class="gi">+                        {</span>
+<span class="gi">+                            last_queued_inference_label = best_label;</span>
+<span class="gi">+                        }</span>
+<span class="gi">+                    }</span>
+
+<span class="w"> </span>                   printf(&quot;\r\n&quot;);
+<span class="w"> </span>                   printf(&quot;Output: %-30s\r\n&quot;, label_text[best_label]);
+<span class="w"> </span>                   break;
+<span class="w"> </span>               }   
+</code></pre></div></li>
+</ul>
+<ol start="4">
+<li>Rebuild and reprogram the device. You should observe that the inference results are now published to the broker together with the LED status</li>
+</ol>
+<p><img src="assets/images/image_lab3_mod2_results.gif" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="conclusion_2">Conclusion<a class="headerlink" href="#conclusion_2" title="Permanent link">&para;</a></h3>
+<p>You successfully added MQTT support to a DEEPCRAFT™ machine learning example using PSOC™ Edge. You integrated VCM, enabling the CM55 to focus on machine learning tasks and to publish messages via a virtual connection while the CM33 application manages the Wi-Fi connection.</p>
+<p>This demonstrates not only how ModusToolbox™ facilitates easy middleware integration, but also the value of VCM in abstracting the IPC implementation—making multi-core connectivity application development simpler.</p>
+<p>For teams building ML-enabled products, this architecture lets the machine learning workload and the network stack be developed, updated, and validated independently, without changes on one core risking the stability of the other. A single, well-tested connectivity implementation on the CM33 can also serve multiple ML applications on the CM55 over time, avoiding the need to re-validate Wi-Fi and cloud connectivity every time the ML model changes, which shortens the path from prototype to a certified product for condition monitoring, predictive maintenance, or smart-sensor applications.</p>
+<h2 id="lab-4-wlan-low-power-assistant">Lab 4: WLAN Low-Power Assistant<a class="headerlink" href="#lab-4-wlan-low-power-assistant" title="Permanent link">&para;</a></h2>
+<h3 id="objective_3">Objective<a class="headerlink" href="#objective_3" title="Permanent link">&para;</a></h3>
+<p>This lab demonstrates the low-power operation of a host PSOC™ Edge E84 MCU and a WLAN AIROC™ CYW55513 Wi-Fi &amp; Bluetooth® combo chip using the network activity handlers provided by the low-power assistant (LPA) middleware.</p>
+<h3 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h3>
+<p>The LPA middleware for Wi-Fi provides a straightforward way to make the low-power features available to developers in the form of a portable configuration layer. It provides features implementing low-power functionality for MCUs, Wi-Fi, and Bluetooth®.</p>
+<p>The LPA middleware is essentially a Wi-Fi offload manager that is instantiated when Wi-Fi Connection Manager (WCM) initialization is done. The offload manager manages the offload configurations which are created using the Device Configurator.</p>
+<p>LPA consists of the following components:</p>
+<ul>
+<li>A configurator tool (using a personality), which makes the low-power features of the system easy to use (see <strong>ModusToolbox™ Device Configurator Tool Guide</strong>). This personality writes data structures that are processed by the firmware and implement the choices made in the personality.</li>
+<li>LPA firmware that is used at system initialization and does not require user interaction.</li>
+<li>A small firmware module that provides integration between the low-power firmware and the user application. This final piece of firmware is part of the end-user application.</li>
+</ul>
+<p>Some of the features supported by LPA include:</p>
+<ul>
+<li><strong>MCU low power:</strong> Allows you to configure the MCU to enter a low-power mode to achieve maximum power savings.</li>
+<li><strong>Wi-Fi low power:</strong> Reduces host MCU wakeups by allowing the WLAN device to handle routine network traffic and protocol maintenance while the MCU remains in a low-power state.<ul>
+<li><strong>Wi-Fi host-wake signal:</strong> Allows the WLAN device to wake the host MCU from its low-power state when host processing is required.</li>
+<li><strong>Wi-Fi Address Resolution Protocol (ARP) offload:</strong> Reduces the time the host needs to remain awake because of ARP broadcast traffic by handling that traffic in the WLAN device.</li>
+<li><strong>Wi-Fi packet filter offload:</strong> Limits which packets the WLAN subsystem passes to the host processor. Filtering unwanted or unnecessary packets prevents them from waking the host from Deep Sleep or keeping it from entering Deep Sleep.</li>
+<li><strong>Wi-Fi TCP keepalive offload:</strong> Reduces host MCU power consumption by offloading TCP keepalive functionality to WLAN firmware.</li>
+<li><strong>DHCP Lease Time Renew offload:</strong> Reduces host MCU power consumption by offloading periodic DHCP requests for lease renewal to WLAN firmware.</li>
+<li><strong>ICMP offload:</strong> Reduces host MCU power consumption by allowing WLAN firmware to reply to ping requests from peers without waking the host.</li>
+<li><strong>Neighbor Discovery offload:</strong> Reduces host MCU power consumption by allowing WLAN firmware to send Neighbor Advertisement responses to Neighbor Solicitation requests from peers.</li>
+<li><strong>NULL Keepalive offload:</strong> Reduces host MCU power consumption by offloading the periodic transmission of NULL keepalive packets to WLAN firmware.</li>
+<li><strong>NAT Keepalive offload:</strong> Reduces host MCU power consumption by offloading the periodic transmission of NAT keepalive packets to WLAN firmware.</li>
+<li><strong>Wake on Wireless LAN:</strong> Allows the MCU to wake when received packets match configured patterns, avoiding unnecessary wakeups for unwanted packets.</li>
+<li><strong>MQTT keepalive offload:</strong> Reduces host MCU power consumption by offloading MQTT keepalive functionality to WLAN firmware.</li>
+</ul>
+</li>
+<li><strong>Bluetooth® low power:</strong> Enables Bluetooth® wake-up signaling by configuring the Bluetooth® host-wake and device-wake pins.</li>
+</ul>
+<p>You will experiment with some of these features in this lab. They are explained in more detail in the LPA middleware library documentation and in the application note <a href="https://www.infineon.com/AN241681">AN241681: Low-power system design with PSOC™ Edge MCU and AIROC™ Wi-Fi &amp; Bluetooth® combo chip</a>.</p>
+<h3 id="hardware-diagram_3">Hardware diagram<a class="headerlink" href="#hardware-diagram_3" title="Permanent link">&para;</a></h3>
+<p>The main hardware components utilized by this lab are:</p>
+<ul>
+<li>UART: output information to serial terminal</li>
+<li>SDIO: Wi-Fi communication between PSOC™ Edge and CYW55513</li>
+<li><code>CYBSP_WIFI_HOST_WAKE</code>: Host wake-up signal from the CYW55513 to the host </li>
+</ul>
+<p>Below is the hardware block diagram for this example:</p>
+<p><img src="assets/images/image_lab4_evk.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<blockquote>
+<p><strong>Note:</strong> This example requires <strong>BOOT SW</strong> to be in the ON position.</p>
+</blockquote>
+<p>See <a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a> for more details.</p>
+<h3 id="project-creation_2">Project creation<a class="headerlink" href="#project-creation_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Follow the steps in <a href="#appendix-a-creating-a-psoc-edge-application-in-modustoolbox">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™</a> to create a new application.
+   When creating the application, select the <strong>PSOC™ Edge WLAN Offloads</strong> application under the <strong>Wi-Fi</strong> section</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> This ModusToolbox™ example supports the PSOC™ Edge EVK. It is not currently available for the KIT_PSE84_AI AI Kit in ModusToolbox™.</p>
+<p><strong>Warning:</strong> Windows has a 260-character path length limit. A long workspace path and/or a long project name may cause build issues when creating some applications.</p>
+</blockquote>
+<p><img src="assets/images/image_lab4_wlan_offloads_template.png" alt="Figure" style="width:637px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>Open <code>proj_cm33_ns/tcp_keepalive_offload.c</code> and modify the following parameters:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>DevCon 2026 demo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WIFI_SSID</code></td>
+<td>GL-PSOCEdge</td>
+</tr>
+<tr>
+<td><code>WIFI_PASSWORD</code></td>
+<td>PSE84WiFi</td>
+</tr>
+<tr>
+<td><code>WIFI_SECURITY_TYPE</code></td>
+<td><code>CY_WCM_SECURITY_WPA2_AES_PSK</code></td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>Open <code>mtb_shared/wifi-host-driver/release-&lt;version&gt;/generated_mac_address.txt</code> and <code>NVRAM_GENERATED_MAC_ADDRESS</code> to assign a MAC address</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> This step is optional when testing one device, but it is necessary when connecting multiple EVKs to the same router. CYW55513 contains OTP bits which are programmed during production by the OEM or module partner. The OTP bits are not programmed in the EVK, so the device reads the MAC address from the file above, or you can program the OTP bits using APIs.</p>
+</blockquote>
+<ol start="4">
+<li>
+<p>Build and program the <strong>WLAN Offloads</strong> application by clicking the <strong>Program</strong> button in the <strong>ModusToolbox™ for VS Code</strong> extension.
+   Make sure the top level of the project is selected in the project workspace to ensure all three projects are built and programmed</p>
+</li>
+<li>
+<p>After the program runs successfully, open the serial terminal and configure the baud rate to 115200-8-N-1. Then press the kit reset button. A message is printed as in the image below</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Note the assigned IP address, because you will use it in the next steps.</p>
+</blockquote>
+<p><img src="assets/images/image_lab4_output1.gif" alt="Figure" style="width:659px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>Connect your PC to the same wireless network</li>
+<li>Open a command prompt and use <code>nping</code> to send a TCP ping to the device’s IP address</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> <code>nping</code> is available with the Nmap installation described in the <a href="#required-development-tools-and-prerequisites">Required development tools and prerequisites</a> section. The Nmap path (e.g., <code>C:\Program Files (x86)\Nmap</code>) should be added to the system path by the installer or manually.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>nping<span class="w"> </span>--tcp<span class="w"> </span>&lt;IP<span class="w"> </span>address&gt;
+</code></pre></div>
+<ol start="8">
+<li>Observe that the device not only responds to the ping request, but also wakes up, prints a message in the terminal, and then goes back to Deep Sleep mode</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> If the device does not respond, make sure both the PC and EVK are connected to the router and are in the same network.</p>
+</blockquote>
+<p><img src="assets/images/image_lab4_nping2.gif" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<blockquote>
+<p><strong>Note:</strong> The host MCU will wake up when any network activity is detected. The reasons for network activity can be due to the broadcast or multicast packets issued by the access point (AP). Further power saving can be implemented by using offload features like packet filtering, which will increase the time the host MCU will be in deep sleep.</p>
+</blockquote>
+<ol start="9">
+<li>Optionally, open Wireshark to observe the TCP packets</li>
+</ol>
+<p><img src="assets/images/image_lab4_nping_wireshark.gif" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="observe-default-project-configuration">Observe default project configuration<a class="headerlink" href="#observe-default-project-configuration" title="Permanent link">&para;</a></h3>
+<p>ModusToolbox™ includes different tools and configurators to aid in the configuration and development of your project. Two important tools enabling LPA are the <strong>Device Configurator</strong> and the <strong>Library Manager</strong>.</p>
+<ul>
+<li>The <strong>Device Configurator</strong> provides a graphical view of device peripherals and it generates macros, data structures, and initialization functions based on your selections. The BSP function <code>cybsp_init()</code> calls the generated functions to set up the clocks, pins, and internal routing. It is typically called from the <code>main()</code> function before using on-chip peripherals such as serial blocks and timer/counters.</li>
+<li>The <strong>Library Manager</strong> provides a GUI to select which Board Support Package (BSP) should be used when building a ModusToolbox™ application. The tool collects a list of available and currently selected BSPs and libraries, as well as all the necessary metadata from a web service. The tool allows you to add and remove BSPs and libraries, as well as change their versions.</li>
+</ul>
+<p>Now, look at the default configuration of this project in the <strong>Library Manager</strong> and the <strong>Device Configurator</strong>.</p>
+<ol>
+<li>[INFO] Open the <strong>Library Manager</strong> tool by clicking the <strong>Configure Middleware</strong> button in the <strong>ModusToolbox™ for VS Code</strong> extension</li>
+</ol>
+<p><img src="assets/images/image_lab4_open_library_manager.png" alt="Figure" style="width:600px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>[INFO] Observe that the Library Manager shows a list of libraries for each of the three projects (<code>cm33_s</code>, <code>cm33_ns</code>, and <code>cm55</code>). <br />
+   The WLAN offloads project already includes the libraries needed to handle Wi-Fi and the low-power assistant library (LPA)</li>
+</ol>
+<p><img src="assets/images/image_lab4_lpa_dependencies.png" alt="Figure" style="width:734px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>[INFO] You can also observe that the LPA library is configured as “<strong>Shared Git Repo</strong>” and it is placed in the <code>mtb_shared</code> folder in your project.
+   Feel free to check the library in the <code>mtb_shared</code> folder in ModusToolbox™.
+   Close <strong>Library Manager</strong> after observing the libraries included in this project. You will not make any changes</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Using <code>mtb_shared</code> is a way to share common libraries across a workspace; however, the Library Manager also allows you to make local copies.</p>
+</blockquote>
+<p><img src="assets/images/image_lab4_shared_library_location.png" alt="Figure" style="width:653px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p><img src="assets/images/image_lab4_shared_library_folders.png" alt="Figure" style="width:250px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>
+<p>[INFO] Now, open the <strong>Device Configurator</strong> tool by clicking the <strong>Configure Device</strong> button in the <strong>ModusToolbox™ for VS Code</strong> extension</p>
+</li>
+<li>
+<p>[INFO] The Device Configurator includes the following tabs:</p>
+</li>
+</ol>
+<ul>
+<li><strong>PSOC™ Edge (PSE846GPS2DBZC4A):</strong> configuration for PSOC™ Edge MCU, including:<ul>
+<li><strong>Peripherals</strong>: configures peripherals including communication, digital, and system.</li>
+<li><strong>Analog</strong>: configures analog modules, including the autonomous analog, which includes ADC, PTComps, autonomous controller, CTBs, and PRB; and the low-power comparators.</li>
+<li><strong>Pins</strong>: configures the GPIOs, including Smart IO functionality.</li>
+<li><strong>Clocks</strong>: configures the device clock tree, including all clock inputs and outputs.</li>
+<li><strong>System</strong>: configures security, protection, and system settings such as debug and power modes.</li>
+<li><strong>Memory</strong>: configures the memory allocation and provides a graphical view of the memory map.</li>
+<li><strong>DMA</strong>: configures the device’s DMAs</li>
+</ul>
+</li>
+<li><strong>AIROC™ Wi-Fi and Bluetooth® combo (CYW55513IUBG)</strong>: configuration for CYW55513, including:<ul>
+<li><strong>Smart Coex library</strong>: improves performance when using Bluetooth® and Wi-Fi at the same time</li>
+<li><strong>Bluetooth® and Wi-Fi power configurators</strong>: configures LPA settings</li>
+</ul>
+</li>
+</ul>
+<p>Feel free to navigate through the different tabs. The Device Configurator generates code only when the <code>design.modus</code> file is saved.</p>
+<ol start="6">
+<li>[INFO] In the Device Configurator, go to the <strong>Pins</strong> tab for the PSOC™ Edge MCU:</li>
+</ol>
+<p><img src="assets/images/image_lab4_device_configurator_pins.png" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="7">
+<li>[INFO] In the PSOC™ Edge E84 EVK, the Wi-Fi Host wake-up signal is connected to <strong>P11.4</strong>, per the kit schematic:</li>
+</ol>
+<p><img src="assets/images/image_lab4_wifi_host_wake_schematic.png" alt="Figure" style="width:740px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="8">
+<li>
+<p>[INFO] Look for P11[4] in the Device Configurator and observe that it is named <code>CYBSP_WIFI_HOST_WAKE</code> and it is configured as follows:</p>
+<ul>
+<li>Drive Mode: Open Drain, Drives Low. Input buffer on</li>
+<li>Initial Drive State: High (1)</li>
+<li>Interrupt Trigger Type: Rising Edge</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> P11.4 is already configured for Wi-Fi host wake-up in the WLAN Offloads example, but other projects can enable this functionality by configuring this pin accordingly.</p>
+</blockquote>
+<p><img src="assets/images/image_lab4_wifi_host_wake_pin_config.png" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="9">
+<li>[INFO] Go to the CYW55513IUBG configuration panel</li>
+</ol>
+<p><img src="assets/images/image_lab4_wireless_device_config.png" alt="Figure" style="width:390px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="10">
+<li>[INFO] Select the <strong>Power→Wi-Fi</strong> panel under <strong>Power</strong>.<br />
+   Observe that the Host Wake functionality is enabled and uses <code>CYBSP_WIFI_HOST_WAKE</code></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Host Wake functionality is already enabled in the WLAN Offloads example, but other projects can enable this functionality by configuring this pin accordingly.</p>
+</blockquote>
+<p><img src="assets/images/image_lab4_lpa_host_wake_settings.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="11">
+<li>
+<p>[INFO] You can also observe that the rest of the configuration is disabled, including packet filters, which explains why the CPU is waking up on TCP ping packets</p>
+</li>
+<li>
+<p>[INFO] Device Configurator includes direct links to documentation.
+    Try clicking the link to the Low Power Assistant Documentation and feel free to navigate through the documentation</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Some documentation links are local, while others require Internet access.</p>
+</blockquote>
+<p><img src="assets/images/image_lab4_lpa_documentation.png" alt="Figure" style="width:747px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p>The WLAN Offloads example already includes LPA support; however, this functionality can be easily added to other projects by leveraging the <strong>Device Configurator</strong> and the <strong>Library Manager</strong>.</p>
+<h3 id="enable-lpa-offload-functionality">Enable LPA offload functionality<a class="headerlink" href="#enable-lpa-offload-functionality" title="Permanent link">&para;</a></h3>
+<p>This section demonstrates three LPA offload features: ARP offload, ICMP offload, and packet filter offload.</p>
+<h4 id="arp-offload">ARP offload<a class="headerlink" href="#arp-offload" title="Permanent link">&para;</a></h4>
+<p><strong>Address Resolution Protocol (ARP)</strong> is used to map an IP address (e.g., 192.168.1.1) to a physical machine address (e.g., ac:32:df:14:16:07). ARP uses broadcast frames to accomplish this.</p>
+<p>ARP broadcast traffic is normally forwarded from the network to the device (Wi-Fi radio) and then to the host (application CPU) network stack. If the host is sleeping, the device wakes it up.</p>
+<p><strong>ARP offload</strong> is designed to improve the power consumption of the connected system by reducing the time the host needs to stay awake due to ARP broadcast traffic. Having the device handle some of the ARP traffic reduces how often the host wakes up from sleep, reducing host power consumption by allowing it to stay in the CPU Sleep and System Deep Sleep states longer.</p>
+<p><strong>Peer Auto Reply</strong> is a power-saving feature that allows the Wi-Fi device to reply to ARP requests from network peers without waking the host. Once the system connects to the network, the host instructs the Wi-Fi device to reply to ARP requests on its behalf while the host is in a low-power state, as shown in the following figure.</p>
+<p><img src="assets/images/image_lab4_arp_offload_flow.png" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p><strong>ARP offload with auto reply</strong> is enabled by default in the WLAN firmware for the PSOC™ Edge E84, so no additional configuration is required in the ModusToolbox™ Device Configurator.</p>
+<p>Test this feature using the following steps:</p>
+<ol>
+<li>Open a command prompt and use <code>nping</code> to send an ARP ping to the device’s IP address</li>
+</ol>
+<div class="highlight"><pre><span></span><code>nping<span class="w"> </span>--arp<span class="w"> </span>&lt;IP<span class="w"> </span>address&gt;
+</code></pre></div>
+<ol start="2">
+<li>Observe that the CYW55513 responds to the request; however, it does not wake up the CPU.
+   You should not observe activity in the serial terminal due to this request</li>
+</ol>
+<p><img src="assets/images/image_lab4_arp_ping_command.gif" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>Optionally, open Wireshark to observe the ARP packets</li>
+</ol>
+<p><img src="assets/images/image_lab4_arp_wireshark.gif" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p>These steps demonstrated that the CYW55513 responds to ARP requests without waking up the CPU from Deep Sleep, which reduces power consumption and maximizes CPU bandwidth.</p>
+<h4 id="icmp-offload">ICMP offload<a class="headerlink" href="#icmp-offload" title="Permanent link">&para;</a></h4>
+<p>The <strong>Internet Control Message Protocol (ICMP)</strong> is a network layer protocol used by network devices to diagnose network communication issues. ICMP is mainly used to determine whether or not data is reaching its intended destination by sending an ICMP request to the specific IP address and receiving the ICMP response in a timely manner.</p>
+<p>With <strong>ICMP offload</strong>, WLAN firmware responds to the ICMP ECHO request by sending a PING ECHO response packet to the peer without waking up the host processor, allowing the host to stay in a sleep state for a longer duration.</p>
+<p><img src="assets/images/image_lab4_icmp_offload_flow.png" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p><strong>ICMP offload</strong> is enabled by default in the WLAN firmware for the PSOC™ Edge E84, so no additional configuration is required in the ModusToolbox™ Device Configurator.</p>
+<p>Test this feature using the following steps:</p>
+<ol>
+<li>Open a command prompt and use <code>nping</code> to send an ICMP ping to the device’s IP address</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The <code>nping</code> command uses ICMP when no protocol is specified. Alternatively, the standard Windows <code>ping</code> command also uses ICMP.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>nping<span class="w"> </span>--icmp<span class="w"> </span>&lt;IP<span class="w"> </span>address&gt;
+</code></pre></div>
+<ol start="2">
+<li>Observe that the CYW55513 responds to the request; however, it does not wake up the CPU.
+   There is no activity in the serial terminal due to this request</li>
+</ol>
+<p><img src="assets/images/image_lab4_icmp_ping_command.gif" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>Optionally, open Wireshark to observe the ICMP packets</li>
+</ol>
+<p><img src="assets/images/image_lab4_icmp_wireshark.gif" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p>This section demonstrated that the CYW55513 responds to ICMP packets without waking up the CPU from Deep Sleep, which reduces power consumption and maximizes CPU bandwidth.</p>
+<h4 id="packet-filter-offload">Packet filter offload<a class="headerlink" href="#packet-filter-offload" title="Permanent link">&para;</a></h4>
+<p>Whenever a WLAN packet is destined for the host, the WLAN processor must awaken the host (if it is asleep) so it can retrieve the packet for processing. Often, the host network stack processes the packet only to discover that it should be discarded because it is not needed. For example, it is destined for a port or service that is not being used. <strong>Packet filters</strong> allow these types of packets to be filtered and discarded by the WLAN processor so the host is not interrupted.</p>
+<p>All packet filters are enabled after the Wi-Fi connection is established, so the application does not need to create any filters specifically to establish a connection.</p>
+<p>The following types of packet filters are supported, based on a standard IP stack:</p>
+<p><img src="assets/images/image_lab4_packet_filter_types.png" alt="Figure" style="width:666px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p>Earlier, you observed that the CPU wakes up on a TCP packet because packet filters are disabled by default. Enable them to observe the difference.</p>
+<ol>
+<li>
+<p>Open the <strong>Device Configurator</strong> and enable the packet filter functionality as shown below</p>
+<ul>
+<li><strong>Minimal Set of Keep Filters</strong> maintains a Wi-Fi connection with the access point, including:<ul>
+<li>ARP (0x806)</li>
+<li>802.1X (0x888E)</li>
+<li>DHCP (68)</li>
+<li>DNS (53)</li>
+</ul>
+</li>
+<li><strong>Enable Filter Configuration 0</strong> is set by default to enable ARP packets (0x806)</li>
+<li><strong>Enable Filter Configuration 1</strong> is enabled to keep TCP packets sent and received using port 50007</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Port 50007 must not be blocked by the firewall on your PC. Otherwise, select a different port.</p>
+</blockquote>
+<p><img src="assets/images/image_lab4_packet_filter_config.png" alt="Figure" style="width:432px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>Save the <code>design.modus</code> file (<strong>Ctrl+S</strong>) in the <strong>Device Configurator</strong>. This regenerates the configuration files. Close the <strong>Device Configurator</strong> after saving completes</li>
+<li>Rebuild and reprogram the device</li>
+<li>
+<p>In the command prompt, use <code>nping</code> to send a TCP ping to the device’s IP address using port 50007
+<div class="highlight"><pre><span></span><code>nping<span class="w"> </span>--tcp<span class="w"> </span>-g<span class="w"> </span><span class="m">50007</span><span class="w"> </span>-p<span class="w"> </span><span class="m">50007</span><span class="w"> </span>&lt;IP<span class="w"> </span>address&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p>Observe that the device wakes up and responds to the request because packets to port 50007 are kept.
+   You should observe activity in the serial terminal because the CPU wakes up</p>
+</li>
+</ol>
+<p><img src="assets/images/image_lab4_filtered_tcp_ping_output.gif" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="6">
+<li>Try sending a packet to a different TCP port and observe that the device does not wake up or respond, because the CYW55513 filters the packet</li>
+</ol>
+<p><img src="assets/images/image_lab4_blocked_tcp_port.gif" alt="Figure" style="width:800px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="7">
+<li>Optionally, open Wireshark to observe the TCP packets</li>
+</ol>
+<p><img src="assets/images/image_lab4_filtered_tcp_wireshark.gif" alt="Figure" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p>This demonstrates the packet filtering functionality, which is useful for keeping the host processor in a low-power mode for as long as possible to maximize CPU bandwidth and optimize power consumption.</p>
+<h3 id="other-functionality-supported-by-lpa">Other functionality supported by LPA<a class="headerlink" href="#other-functionality-supported-by-lpa" title="Permanent link">&para;</a></h3>
+<p>In addition to ARP offload, ICMP offload, and packet filter offload, the Low Power Assistant (LPA) middleware supports a broad set of networking and Bluetooth® low-power features that help reduce host MCU wakeups and extend system battery life. These features are configured through LPA and executed by the Wi-Fi &amp; Bluetooth® combo device, allowing the PSOC™ Edge MCU to remain in low-power modes for longer periods.</p>
+<p>Key capabilities include:</p>
+<ul>
+<li>
+<p><strong>TCP keepalive offload</strong></p>
+<p>The TCP keepalive mechanism can be handled by the combo device without involving the host stack. This allows long-lived TCP connections (for example, to cloud services) to be maintained while the MCU stays in deep sleep, reducing both power and host processing overhead.</p>
+</li>
+<li>
+<p><strong>DHCP lease time renew offload</strong></p>
+<p>DHCP lease renewals can be performed by the wireless device itself. This prevents periodic host wakeups just to refresh the IP address lease, which is particularly useful for always-connected IoT nodes.</p>
+</li>
+<li>
+<p><strong>Neighbor Discovery (ND) offload</strong></p>
+<p>For IPv6 networks, Neighbor Discovery messages can be processed on the radio device, avoiding host intervention for routine link-layer address resolution and reachability checks.</p>
+</li>
+<li>
+<p><strong>NULL / NAT keepalive offload</strong></p>
+<p>The combo device can generate NULL and NAT keepalive traffic to keep Wi-Fi associations and NAT bindings alive through intermediate network equipment. This ensures connectivity is preserved even while the MCU is sleeping.</p>
+</li>
+<li>
+<p><strong>Wake on Wireless LAN (WoWLAN)</strong></p>
+<p>The radio can monitor incoming Wi-Fi traffic and wake the MCU on specific events (such as a magic packet, pattern match, or other configured triggers), enabling ultra-low-power idle states while still remaining reachable over the network.</p>
+</li>
+<li>
+<p><strong>MQTT keepalive offload</strong></p>
+<p>For MQTT-based applications, keepalive messages can be managed by the wireless device, allowing persistent broker connections with minimal MCU activity—ideal for sensor nodes that send data intermittently.</p>
+</li>
+<li>
+<p><strong>Bluetooth® low power</strong></p>
+<p>On the Bluetooth® side, LPA supports low-power modes and offloads that reduce host wakeups during advertising, scanning, and connection maintenance. This is especially important for battery-powered peripherals and audio devices where both Wi-Fi and Bluetooth® may be active.</p>
+</li>
+</ul>
+<h3 id="conclusion_3">Conclusion<a class="headerlink" href="#conclusion_3" title="Permanent link">&para;</a></h3>
+<p>You successfully executed the WLAN Offloads example to enable and evaluate some of the capabilities of the Low-Power Assistant library. This functionality can be easily integrated into any PSOC™ Edge application that uses the CYW55513, and demonstrates how LPA provides a comprehensive framework for managing low-power behavior across Wi-Fi, TCP/IP, MQTT, and Bluetooth® stacks. By shifting routine protocol maintenance and link-keepalive tasks from the PSOC™ Edge MCU to the combo device, LPA helps designers meet aggressive power budgets while maintaining robust, always-on connectivity.</p>
+<p>For battery-powered and energy-harvested products, every unnecessary host wakeup shortens battery life or forces the use of a larger, more expensive battery. By letting the CYW55513 filter and answer routine network traffic on its own, LPA can meaningfully extend the time between charges or battery replacements for connected sensors, wearables, and other always-on IoT devices, without sacrificing responsiveness to real application traffic and without requiring custom low-power firmware to be developed and validated from scratch.</p>
+<h2 id="appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm">Appendix A: Creating a PSOC™ Edge application in ModusToolbox™<a class="headerlink" href="#appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm" title="Permanent link">&para;</a></h2>
+<p><span id="appendix-a-creating-a-psoc-edge-application-in-modustoolbox"></span></p>
+<p>The following steps show how to create a new project for PSOC™ Edge in ModusToolbox™, using either Visual Studio Code (VS Code) or the command-line interface (CLI).</p>
+<h3 id="creating-an-application-using-vs-code">Creating an application using VS Code<a class="headerlink" href="#creating-an-application-using-vs-code" title="Permanent link">&para;</a></h3>
+<p>This appendix shows a quick workflow to create and open a new PSOC™ Edge application using ModusToolbox™ and Visual Studio Code.</p>
+<ol>
+<li>Open <strong>ModusToolbox™ Dashboard</strong>. Select <strong>Microsoft Visual Studio Code</strong> as the target IDE, and then launch <strong>Project Creator</strong>.
+    If you have not installed ModusToolbox™ or Visual Studio Code, see the <a href="#required-development-tools-and-prerequisites">Required development tools and prerequisites</a> section</li>
+</ol>
+<p><img src="assets/images/MTB_Dashboard.png" alt="ModusToolbox™ Dashboard" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>Choose the PSOC™ Edge BSP that matches your kit. This training uses the <strong>KIT_PSE84_EVAL_EPC2</strong> (selected below) or the <strong>KIT_PSE84_AI</strong>. Click <strong>Next</strong> after selecting the BSP</li>
+</ol>
+<p><img src="assets/images/image_appendix_a_bsp_selection.png" alt="Project Creator start screen" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="3">
+<li>Select a <strong>path</strong> for your project, make sure the <strong>target IDE</strong> is Microsoft Visual Studio Code, and then select the application for the lab you are following (see each lab's <strong>Project creation</strong> section for the specific application and category).
+   Optionally, rename the project as desired and click <strong>Create</strong></li>
+</ol>
+<blockquote>
+<p><strong>Warning:</strong> Windows has a 260-character path length limit. A long workspace path and/or a long project name may cause build issues when creating some applications.</p>
+</blockquote>
+<p><img src="assets/images/image_appendix_a_application_selection.png" alt="Project Creator target and template selection" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>After project generation completes, open the generated workspace in Visual Studio Code by opening the <code>.code-workspace</code> file created in the project folder</li>
+</ol>
+<p><img src="assets/images/VSC_open1.png" alt="Open generated project in VS Code" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<blockquote>
+<p><strong>Note:</strong> Open the workspace in trust mode to launch the <strong>ModusToolbox™ for VS Code</strong> extension.</p>
+</blockquote>
+<p><img src="assets/images/VSC_open3.png" alt="open workspace in trust mode" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="5">
+<li>The project is imported, and you should see all the files in Visual Studio Code. Use the <strong>ModusToolbox™ for VS Code</strong> extension to build and program the project</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The <strong>ModusToolbox™ for VS Code</strong> extension might show some warnings. Click the corresponding buttons to fix the configuration issues.</p>
+</blockquote>
+<p><img src="assets/images/VSC_open2.png" alt="Verify project in VS Code" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h4 id="using-llvm-compiler-in-visual-studio-code">Using LLVM compiler in Visual Studio Code<a class="headerlink" href="#using-llvm-compiler-in-visual-studio-code" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Download LLVM from the <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases/">LLVM Embedded Toolchain for Arm releases page</a></li>
+<li>Unzip to the user directory. For example:
+   Windows: <code>C:\Users\&lt;user&gt;\LLVM-ET-Arm-19.1.5-Windows-x86_64</code></li>
+<li>Go to the <strong>Settings</strong> tab in the <strong>ModusToolbox™ for VS Code</strong> extension, select <strong>LLVM_ARM</strong> as the <strong>Toolchain</strong>, and then select the corresponding <strong>LLVM Compiler Path</strong></li>
+</ol>
+<p><img src="assets/images/MTB_VSC_LLVM.png" alt="LLVM toolchain configuration in the ModusToolbox™ for VS Code extension" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="creating-an-application-using-the-cli">Creating an application using the CLI<a class="headerlink" href="#creating-an-application-using-the-cli" title="Permanent link">&para;</a></h3>
+<p>ModusToolbox™ also includes a <code>project-creator-cli</code> tool so you can create applications without a GUI, or automate project creation in scripts.</p>
+<blockquote>
+<p><strong>Note:</strong> On Windows, run CLI commands from the <strong>modus-shell</strong> (Cygwin) terminal included with the ModusToolbox™ installation, instead of a standard Windows command-line application. This shell provides access to all ModusToolbox™ tools. On Linux and macOS, you can use any terminal application.</p>
+</blockquote>
+<ol>
+<li>
+<p>Open a modus-shell (Windows) or terminal (Linux/macOS) window, and navigate to the folder where you want to create the application</p>
+</li>
+<li>
+<p>Run the following command to list the available code examples for the <strong>KIT_PSE84_EVAL_EPC2</strong> BSP:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>project-creator-cli<span class="w"> </span>--list-apps<span class="w"> </span>KIT_PSE84_EVAL_EPC2
+</code></pre></div>
+<ol start="3">
+<li>Run the following command to create the application selected for the lab you are following, replacing <code>&lt;app-id&gt;</code> and <code>&lt;project-name&gt;</code> accordingly:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>project-creator-cli<span class="w"> </span>--board-id<span class="w"> </span>KIT_PSE84_EVAL_EPC2<span class="w"> </span>--app-id<span class="w"> </span>&lt;app-id&gt;<span class="w"> </span>--user-app-name<span class="w"> </span>&lt;project-name&gt;
+</code></pre></div>
+<ol start="4">
+<li>You can build, program, and open other ModusToolbox™ tools directly from the modus-shell or terminal, for example, <code>make build</code>, <code>make program</code>, <code>make device-configurator</code>, or <code>make library-manager</code>.
+    Visit the <a href="https://www.infineon.com/modustoolboxuserguide">ModusToolbox™ user guide</a> for more information</li>
+</ol>
+<h4 id="using-llvm-compiler-in-the-cli">Using LLVM compiler in the CLI<a class="headerlink" href="#using-llvm-compiler-in-the-cli" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Download LLVM from the <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases/">LLVM Embedded Toolchain for Arm releases page</a></li>
+<li>Unzip to the user directory. For example:
+   Windows: <code>C:\Users\&lt;user&gt;\LLVM-ET-Arm-19.1.5-Windows-x86_64</code></li>
+<li>Define the environment variable <code>CY_COMPILER_LLVM_ARM_DIR</code> to point to this directory, based on your operating system</li>
+</ol>
+<h2 id="appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details<a class="headerlink" href="#appendix-b-kit_pse84_eval-details" title="Permanent link">&para;</a></h2>
+<p><img src="assets/images/image_appendix_b_evk_board_overview.png" alt="KIT_PSE84_EVAL board overview" style="width:757px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">No.</th>
+<th>Item</th>
+<th style="text-align: right;">No.</th>
+<th>Item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Baseboard power LED (D1)</td>
+<td style="text-align: right;">26</td>
+<td>3-axis magnetometer (U4)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>KitProg3 program/debug USB-C connector (J8)</td>
+<td style="text-align: right;">27</td>
+<td>Raspberry Pi-compatible display capacitive touch connector (J41)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>PSOC™ 5LP-based KitProg3 programmer and debugger (CY8C5868LTI-LP039, U2)</td>
+<td style="text-align: right;">28</td>
+<td>Linear potentiometer (R34)</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Reset button (SW1)</td>
+<td style="text-align: right;">29</td>
+<td>Analog microphones (IM73A135V01XTSA1, U36 and U37)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>KitProg3 status LED (D2)</td>
+<td style="text-align: right;">30</td>
+<td>User LEDs (D3, D4, D5)</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>PSOC™ Edge E84 MCU ETM/JTAG debug and trace header (J15)</td>
+<td style="text-align: right;">31</td>
+<td>Thermistor (TH1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>PSOC™ Edge E84 MCU 10-pin SWD/JTAG program and debug header (J16)</td>
+<td style="text-align: right;">32</td>
+<td>CAPSENSE™ buttons and slider (CSB1, CSB2, CSS1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Alternative serial interface configuration headers (J20, J21)</td>
+<td style="text-align: right;">33</td>
+<td>BOOT configuration switch (SW6)</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>PSOC™ Edge E84 MCU USB host Type-A connector (J27)</td>
+<td style="text-align: right;">34</td>
+<td>Proximity sense connector (J19)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>USB-C power delivery (PD) fault LED (D6)</td>
+<td style="text-align: right;">35</td>
+<td>I/O headers compatible with Arduino UNO R3 (J2, J3, J4)</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Custom display capacitive touch panel connector (J37)**</td>
+<td style="text-align: right;">36</td>
+<td>Alternative serial interface I/O header (J14)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>PSOC™ Edge E84 MCU USB-C connector (J30)</td>
+<td style="text-align: right;">37</td>
+<td>Power header compatible with Arduino UNO R3 (J1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>External power supply VIN connector (J31)</td>
+<td style="text-align: right;">38</td>
+<td>PSOC™ Edge E84 MCU expansion I/O headers (J6, J7, J40)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>PSOC™ Edge E84 MCU user buttons (SW2, SW4)</td>
+<td style="text-align: right;">39</td>
+<td>MicroSD card holder (J35)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>M.2 (B-key) memory interface connector (J29)</td>
+<td style="text-align: right;">40</td>
+<td>Infineon's Shield2Go interface headers (J10, J12)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>128 Mbit Octal-SPI HYPERRAM™ (S70KS1283GABHI020, U12)***</td>
+<td style="text-align: right;">41</td>
+<td>Analog microphones (IM73A135V01XTSA1, U36 and U37)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>Processor System on module (SoM) 260-pin SODIMM connector (J28)</td>
+<td style="text-align: right;">42</td>
+<td>mikroBUS compatible headers by Mikroelektronika (J9, J17)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td>CYW55513 tri-band (Wi-Fi &amp; Bluetooth®) combo radio (U3) section</td>
+<td style="text-align: right;">43</td>
+<td>Extended I2S header (J11)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">19</td>
+<td>Processor System on module (SoM) power LED (D3)</td>
+<td style="text-align: right;">44</td>
+<td>6-axis accelerometer and gyroscope IMU (U5)</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>1-Gb Octal-SPI NOR flash (S28HS01GTGZBH1030, U10)***</td>
+<td style="text-align: right;">45</td>
+<td>M.2 (E-key) radio interface connector (J13)</td>
+</tr>
+<tr>
+<td style="text-align: right;">21</td>
+<td>128-Mb Quad-SPI NOR flash (S25FS128SAGMFB100, U11)</td>
+<td style="text-align: right;">46</td>
+<td>PSOC™ Edge E84 MCU power selection/monitoring headers (J18, J22, J23, J24, J25, J26)</td>
+</tr>
+<tr>
+<td style="text-align: right;">22</td>
+<td>MIPI-DSI custom display connector (J38)**</td>
+<td style="text-align: right;">47</td>
+<td>Headphone connector (J34)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">23</td>
+<td>PSOC™ Edge E84 MCU (PSE846GPS2DBZC4A, U1)</td>
+<td style="text-align: right;">48</td>
+<td>Speaker (ACC6)</td>
+</tr>
+<tr>
+<td style="text-align: right;">24</td>
+<td>PSOC™ 4000T CAPSENSE™ Co-processor (U9)***</td>
+<td style="text-align: right;">49</td>
+<td>RJ45 Ethernet MagJack connector (J5)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">25</td>
+<td>Raspberry Pi-compatible MIPI-DSI display connector (J39)**</td>
+<td style="text-align: right;">50</td>
+<td>KitProg3 programming mode selection button (SW3)</td>
+</tr>
+</tbody>
+</table>
+<p>*Footprint only, not populated on the board</p>
+<p>**Component at the bottom side of the Baseboard</p>
+<p>***Component at the bottom side of the SoM</p>
+<h2 id="appendix-c-kit_pse84_ai-details">Appendix C: KIT_PSE84_AI details<a class="headerlink" href="#appendix-c-kit_pse84_ai-details" title="Permanent link">&para;</a></h2>
+<p>The KIT_PSE84_AI shares the same PSOC™ Edge E84 MCU and CYW55513 Wi-Fi &amp; Bluetooth® combo device used in this training, in a board form factor optimized for machine learning, audio, and sensor fusion applications.</p>
+<div style="display:flex; gap:16px; justify-content:center; align-items:flex-start;">
+
+<img src="assets/images/image_appendix_c_ai_board_top.svg" alt="KIT_PSE84_AI board - top view" style="width:48%; max-width:380px; height:auto;" />
+
+<img src="assets/images/image_appendix_c_ai_board_bottom.svg" alt="KIT_PSE84_AI board - bottom view" style="width:48%; max-width:380px; height:auto;" />
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">No.</th>
+<th>Item</th>
+<th style="text-align: right;">No.</th>
+<th>Item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>PSOC™ Edge E84 MCU USB Device/Host connector (J2)</td>
+<td style="text-align: right;">17</td>
+<td>PSOC™ Edge E84 MCU 10-pin SWD/JTAG program and debug header (J4)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>PSOC™ Edge E84 MCU user button (SW1)</td>
+<td style="text-align: right;">18</td>
+<td>128-Mbit Octal-SPI HYPERRAM™ (S70KS1283GABHI020, U3)</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>6-axis accelerometer and gyroscope (U18)</td>
+<td style="text-align: right;">19</td>
+<td>DVP camera interface header (J14)</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>KitProg3 program/debug USB-C connector (J1)</td>
+<td style="text-align: right;">20</td>
+<td>Battery input connector (J3)</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>KitProg3 status LED (LED4)</td>
+<td style="text-align: right;">21</td>
+<td>Power LED (LED5)</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>User LEDs (LED1, LED2, LED3)</td>
+<td style="text-align: right;">22</td>
+<td>XENSIV™ digital MEMS microphones (IM73D122V01, U7, U8)</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Digital humidity and temperature sensor (U22)</td>
+<td style="text-align: right;">23</td>
+<td>Speaker connector output (J8)</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>XENSIV™ 60 GHz RADAR sensor (BGT60TR13C, U5)</td>
+<td style="text-align: right;">24</td>
+<td>Audio DAC and amplifier (U28)</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>XENSIV™ digital barometric pressure sensor (DPS368, U6)</td>
+<td style="text-align: right;">25</td>
+<td>512-Mbit Quad-SPI NOR flash (S25HS512TFABHI013, U4)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>PSOC™ Edge E84 MCU reset button (SW2)</td>
+<td style="text-align: right;">26</td>
+<td>Analog microphones (IM73A135V01XTSA1, U9, U10)</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>3-axis magnetometer (U20)</td>
+<td style="text-align: right;">27</td>
+<td>Display power and capacitive touch input connector (J10)</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>PSOC™ Edge E84 MCU (PSE846GPS2DBZC4A, U1)</td>
+<td style="text-align: right;">28</td>
+<td>I2C (QWIIC) interface connector (J7)</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>Expansion I/O header (J5)</td>
+<td style="text-align: right;">29</td>
+<td>Analog I/O interface header (J17)</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>CYW55513-based Murata Type 2FY module (U25)</td>
+<td style="text-align: right;">30</td>
+<td>KitProg3 (PSOC™ 5LP) programmer and debugger (CY8C5868LTI-LP039, U2)</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>Wi-Fi/Bluetooth® antenna (ANT1)</td>
+<td style="text-align: right;">31</td>
+<td>KitProg3 programming mode selection button (SW3)</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>Raspberry Pi-compatible MIPI-DSI display connector (J10)</td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="revision-history">Revision history<a class="headerlink" href="#revision-history" title="Permanent link">&para;</a></h2>
+<table class="no-center-table">
+  <thead>
+    <tr>
+      <th>Document revision</th>
+      <th>Date</th>
+      <th>Description of changes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**</td>
+      <td>2026-10-04</td>
+      <td>Initial release</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h3>
+<p>All referenced product or service names and trademarks are the property of their respective owners.</p>
+<p>The Bluetooth&reg; word mark and logos are registered trademarks owned by Bluetooth SIG, Inc., and any use of such marks by Infineon is under license.</p>
+<p>PSOC&trade;, formerly known as PSoC&trade;, is a trademark of Infineon Technologies. Any references to PSoC&trade; in this document or others shall be deemed to refer to PSOC&trade;.</p>
+<hr />
+<p>© Cypress Semiconductor Corporation, 2023-2026. This document is the property of Cypress Semiconductor Corporation, an Infineon Technologies company, and its affiliates ("Cypress"). This document, including any software or firmware included or referenced in this document ("Software"), is owned by Cypress under the intellectual property laws and treaties of the United States and other countries worldwide. Cypress reserves all rights under such laws and treaties and does not, except as specifically stated in this paragraph, grant any license under its patents, copyrights, trademarks, or other intellectual property rights. If the Software is not accompanied by a license agreement and you do not otherwise have a written agreement with Cypress governing the use of the Software, then Cypress hereby grants you a personal, non-exclusive, nontransferable license (without the right to sublicense) (1) under its copyright rights in the Software (a) for Software provided in source code form, to modify and reproduce the Software solely for use with Cypress hardware products, only internally within your organization, and (b) to distribute the Software in binary code form externally to end users (either directly or indirectly through resellers and distributors), solely for use on Cypress hardware product units, and (2) under those claims of Cypress's patents that are infringed by the Software (as provided by Cypress, unmodified) to make, use, distribute, and import the Software solely for use with Cypress hardware products. Any other use, reproduction, modification, translation, or compilation of the Software is prohibited.
+<br>
+TO THE EXTENT PERMITTED BY APPLICABLE LAW, CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS DOCUMENT OR ANY SOFTWARE OR ACCOMPANYING HARDWARE, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. No computing device can be absolutely secure. Therefore, despite security measures implemented in Cypress hardware or software products, Cypress shall have no liability arising out of any security breach, such as unauthorized access to or use of a Cypress product. CYPRESS DOES NOT REPRESENT, WARRANT, OR GUARANTEE THAT CYPRESS PRODUCTS, OR SYSTEMS CREATED USING CYPRESS PRODUCTS, WILL BE FREE FROM CORRUPTION, ATTACK, VIRUSES, INTERFERENCE, HACKING, DATA LOSS OR THEFT, OR OTHER SECURITY INTRUSION (collectively, "Security Breach"). Cypress disclaims any liability relating to any Security Breach, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any Security Breach. In addition, the products described in these materials may contain design defects or errors known as errata which may cause the product to deviate from published specifications. To the extent permitted by applicable law, Cypress reserves the right to make changes to this document without further notice. Cypress does not assume any liability arising out of the application or use of any product or circuit described in this document. Any information provided in this document, including any sample design information or programming code, is provided only for reference purposes. It is the responsibility of the user of this document to properly design, program, and test the functionality and safety of any application made of this information and any resulting product. "High-Risk Device" means any device or system whose failure could cause personal injury, death, or property damage. Examples of High-Risk Devices are weapons, nuclear installations, surgical implants, and other medical devices. "Critical Component" means any component of a High-Risk Device whose failure to perform can be reasonably expected to cause, directly or indirectly, the failure of the High-Risk Device, or to affect its safety or effectiveness. Cypress is not liable, in whole or in part, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any use of a Cypress product as a Critical Component in a High-Risk Device. You shall indemnify and hold Cypress, including its affiliates, and its directors, officers, employees, agents, distributors, and assigns harmless from and against all claims, costs, damages, and expenses, arising out of any claim, including claims for product liability, personal injury or death, or property damage arising from any use of a Cypress product as a Critical Component in a High-Risk Device. Cypress products are not intended or authorized for use as a Critical Component in any High-Risk Device except to the limited extent that (i) Cypress's published data sheet for the product explicitly states Cypress has qualified the product for use in a specific High-Risk Device, or (ii) Cypress has given you advance written authorization to use the product as a Critical Component in the specific High-Risk Device and you have signed a separate indemnification agreement.
+<br>
+Cypress, the Cypress logo, and combinations thereof, ModusToolbox, PSoC, CAPSENSE, EZ-USB, F-RAM, and TRAVEO are trademarks or registered trademarks of Cypress or a subsidiary of Cypress in the United States or in other countries. For a more complete list of Cypress trademarks, visit www.infineon.com. Other names and brands may be claimed as property of their respective owners.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.footer", "navigation.expand", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

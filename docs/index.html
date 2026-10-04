@@ -1,0 +1,693 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on training manual for PSOC™ Edge E84 wireless applications, covering Wi-Fi onboarding over Bluetooth® LE, Bluetooth® LE Audio, Wi-Fi MQTT with the Virtual Connectivity Manager, and WLAN low-power assistant offloads using the CYW55513 combo device.
+">
+      
+      
+        <meta name="author" content="Infineon Technologies AG">
+      
+      
+      
+      
+        <link rel="next" href="pse84-wireless-intro-e2-training-manual.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>PSOC™ Edge Training - Wireless Introduction</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#psoctm-edge-training-wireless-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="PSOC™ Edge Training - Wireless Introduction" class="md-header__button md-logo" aria-label="PSOC™ Edge Training - Wireless Introduction" data-md-component="logo">
+      
+  <img src="assets/images/infineon_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PSOC™ Edge Training - Wireless Introduction
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Infineon/mtb-training-psoc-edge-wireless-intro" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Infineon/mtb-training-psoc-edge-wireless-intro
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="PSOC™ Edge Training - Wireless Introduction" class="md-nav__button md-logo" aria-label="PSOC™ Edge Training - Wireless Introduction" data-md-component="logo">
+      
+  <img src="assets/images/infineon_logo.png" alt="logo">
+
+    </a>
+    PSOC™ Edge Training - Wireless Introduction
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Infineon/mtb-training-psoc-edge-wireless-intro" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Infineon/mtb-training-psoc-edge-wireless-intro
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#device-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device family
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to use this training?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training level
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expected-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expected Outcomes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-and-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References and resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pse84-wireless-intro-e2-training-manual.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="psoctm-edge-training-wireless-introduction">PSOC™ Edge Training - Wireless Introduction<a class="headerlink" href="#psoctm-edge-training-wireless-introduction" title="Permanent link">&para;</a></h1>
+<p>This training provides an introduction to adding Wi-Fi and Bluetooth® connectivity to PSOC™ Edge E84 microcontrollers
+using the AIROC™ CYW55513 combo device, including Wi-Fi onboarding over Bluetooth® LE, Bluetooth® LE Audio,
+machine learning with MQTT connectivity using the Virtual Connectivity Manager (VCM), and low-power operation
+with the WLAN Low-Power Assistant (LPA).
+The training includes hands-on labs for each topic,
+providing a great starting point to getting familiar with wireless connectivity on PSOC™ Edge.</p>
+<h2 id="device-family">Device family<a class="headerlink" href="#device-family" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm">PSOC™ Edge</a></li>
+<li><a href="https://www.infineon.com/part/CYW55513">AIROC™ CYW55513</a></li>
+</ul>
+<h2 id="how-to-use-this-training">How to use this training?<a class="headerlink" href="#how-to-use-this-training" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Download the training <a href="#content">content</a>.</li>
+<li>Watch the video or review the presentation at your own pace.</li>
+<li>Follow the step-by-step instructions in the training manual during the hands-on sections.</li>
+<li>Use the provided source files if needed to verify the lab results.</li>
+</ol>
+<h2 id="training-level">Training level<a class="headerlink" href="#training-level" title="Permanent link">&para;</a></h2>
+<ul>
+<li>E2: Intermediate</li>
+</ul>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="recommended-trainings">Recommended trainings<a class="headerlink" href="#recommended-trainings" title="Permanent link">&para;</a></h3>
+<ul>
+<li>This training does not cover foundational concepts of ModusToolbox™, PSOC™ Edge, or wireless protocols.</li>
+<li>For an introduction to PSOC™ MCUs, including getting-started guides for ModusToolbox™, see the <a href="https://www.infineon.com/psocdeveloper">PSOC™ Developer Journey</a>.</li>
+<li>For PSOC™ Edge trainings, from beginner tutorials to advanced sessions, visit the <a href="https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd">PSOC™ Edge E84 Training Collection</a>.</li>
+<li>For Infineon Wi-Fi and Bluetooth® trainings, visit the <a href="https://training.infineon.com/video/0033a2c3-cfa6-40d2-9bde-780551f10c15">Introduction to Infineon Wi-Fi &amp; Bluetooth Training Collection</a>.</li>
+</ul>
+<h3 id="tools-see-training-manual-for-versions-and-installation-instructions">Tools (see <a href="#content">training manual</a> for versions and installation instructions)<a class="headerlink" href="#tools-see-training-manual-for-versions-and-installation-instructions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup">ModusToolbox™</a> with <a href="https://code.visualstudio.com/">Visual Studio Code</a> and the Infineon ModusToolbox™ for VS Code extension</li>
+<li><a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup">Edge Protect Security Suite</a></li>
+<li><a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup">ModusToolbox™ Programming tools</a></li>
+<li><a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases/">LLVM for Arm®</a></li>
+<li><a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxpackaudioswcodecs">ModusToolbox™ Audio SW Codecs Tech Pack</a></li>
+<li><a href="https://nmap.org/download">Nmap</a></li>
+<li><a href="https://www.wireshark.org/download.html">Wireshark</a> (optional)</li>
+<li><a href="https://mosquitto.org/download">Mosquitto MQTT broker</a> (optional)</li>
+<li><a href="https://github.com/thomasnordquist/MQTT-Explorer/releases">MQTT Explorer</a> (optional)</li>
+<li>AIROC™ Bluetooth® Connect mobile application (Android or iOS)</li>
+<li>Terminal emulator</li>
+</ul>
+<h2 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.infineon.com/evaluation-board/KIT-PSE84-EVAL">KIT_PSE84_EVAL</a> (required for Labs 2 and 4; Labs 1 and 3 can also use the KIT_PSE84_AI)</li>
+<li><a href="https://www.infineon.com/evaluation-board/KIT-PSE84-AI">KIT_PSE84_AI</a> (optional, Labs 1 and 3 only)</li>
+<li>USB-C cable</li>
+<li>Wi-Fi access point (router)</li>
+<li>Android or iOS mobile device (Lab 1)</li>
+</ul>
+<h2 id="duration">Duration<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h2>
+<ul>
+<li>4hrs, including video and hands-on labs</li>
+</ul>
+<h2 id="agenda">Agenda<a class="headerlink" href="#agenda" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Edge AI meets connectivity</li>
+<li>Lab 1: Wi-Fi onboarding using BLE</li>
+<li>Efficient Bluetooth® LE audio</li>
+<li>Lab 2: Bluetooth® LE Audio</li>
+<li>Dual core support with Virtual Connectivity Manager (VCM)</li>
+<li>Lab 3: Adding connectivity to machine learning with dual-core virtual MQTT client</li>
+<li>Low-power assistant (LPA)</li>
+<li>Lab 4: WLAN Low-Power Assistant</li>
+<li>Other key advantages</li>
+</ol>
+<h2 id="expected-outcomes">Expected Outcomes<a class="headerlink" href="#expected-outcomes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Understand how PSOC™ Edge E84 and the CYW55513 combo device work together to provide Wi-Fi and Bluetooth® connectivity.</li>
+<li>Provision Wi-Fi credentials over Bluetooth® LE using a custom GATT service.</li>
+<li>Run a Bluetooth® LE Audio broadcast sink and understand how the Arm® Helium extension accelerates LC3 audio decoding.</li>
+<li>Add Wi-Fi and MQTT connectivity to a machine learning application using the Virtual Connectivity Manager (VCM).</li>
+<li>Use the Low-Power Assistant (LPA) offloads to keep the host MCU in Deep Sleep, and observe the effect with nping and Wireshark.</li>
+</ul>
+<h2 id="content">Content<a class="headerlink" href="#content" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Training video at Infineon Academy (coming soon)</li>
+<li><a href="Presentation/PSE84_wireless_intro_E2.pdf">Presentation</a></li>
+<li><a href="pse84-wireless-intro-e2-training-manual.html">Training manual document</a></li>
+<li><a href="https://infineon.github.io/mtb-training-psoc-edge-wireless-intro">Training manual web page</a></li>
+<li><a href="https://github.com/Infineon/mtb-training-psoc-edge-wireless-intro/tree/main/Lab_Source">Lab solutions</a></li>
+</ul>
+<h2 id="references-and-resources">References and resources<a class="headerlink" href="#references-and-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm">PSOC™ Edge MCUs</a></li>
+<li><a href="https://www.infineon.com/part/CYW55513">AIROC™ CYW55513</a></li>
+<li><a href="https://www.infineon.com/psocdeveloper">PSOC™ Developer Journey</a></li>
+<li><a href="https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd">PSOC™ Edge E84 Training Collection</a></li>
+<li><a href="https://training.infineon.com/video/0033a2c3-cfa6-40d2-9bde-780551f10c15">Introduction to Infineon Wi-Fi &amp; Bluetooth Training Collection</a></li>
+<li><a href="https://www.infineon.com/AN241681">AN241681: Low-power system design with PSOC™ Edge MCU and AIROC™ Wi-Fi &amp; Bluetooth® combo chip</a></li>
+<li><a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxpackaudioswcodecs">ModusToolbox™ Audio SW Codecs Tech Pack</a></li>
+<li><a href="https://github.com/Infineon/mtb-example-psoc-edge-wifi-dual-core-virtual-mqtt-client">PSOC™ Edge MCU: Wi-Fi dual-core virtual MQTT client</a></li>
+<li><a href="https://www.infineon.com/psocdeveloper/ai-hub">DEEPCRAFT™ AI Hub</a></li>
+</ul>
+<h2 id="history">History<a class="headerlink" href="#history" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/04/2026</td>
+<td>**</td>
+<td>First public release</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+        
+          
+          <a href="pse84-wireless-intro-e2-training-manual.html" class="md-footer__link md-footer__link--next" aria-label="Next: Lab Manual">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lab Manual
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.footer", "navigation.expand", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

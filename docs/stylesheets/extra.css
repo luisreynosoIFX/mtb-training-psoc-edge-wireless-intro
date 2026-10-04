@@ -1,0 +1,277 @@
+/* Simple, static styling overrides */
+
+/* Hide heading permalink icon (paragraph symbol) on hover */
+.md-typeset .headerlink {
+  display: none !important;
+}
+
+/* In file:// preview, suppress stuck Material search output panel. */
+.file-preview-no-search .md-search__output {
+  display: none !important;
+}
+
+/* ── Hide right TOC sidebar ──────────────────────────────── */
+.md-sidebar.md-sidebar--secondary {
+  display: none !important;
+}
+
+/* ── Full-width content area ─────────────────────────────── */
+.md-main {
+  flex-grow: 1;
+}
+
+.md-main__inner {
+  margin-left: 0;
+  padding-left: 1rem;
+  max-width: 100%;
+}
+
+.md-content {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* ── Header banner ───────────────────────────────────────── */
+.md-header {
+  background-color: #FFFEFF;
+  color: #0A8276;
+}
+
+.md-header__inner {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Keep MkDocs search visible in the top ribbon */
+@media screen and (min-width: 60em) {
+  .md-header__button[for="__search"] {
+    display: none;
+  }
+
+  .md-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .md-search {
+    display: block;
+    padding: 0;
+    margin-left: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 22rem;
+  }
+
+  .md-search__inner {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+
+  .md-header__source {
+    flex: 0 0 auto;
+    margin-left: 0.25rem;
+  }
+
+  .md-search__form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    border: 1px solid #0A8276;
+    border-radius: 0.2rem;
+    background-color: #FFFEFF;
+  }
+
+  .md-search__form > label.md-search__icon {
+    display: none;
+  }
+
+  .md-search__input {
+    height: 2rem;
+    padding-left: 0.75rem;
+  }
+
+  .md-search__input::placeholder {
+    color: #0A8276;
+    opacity: 1;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .md-search__output {
+    top: 2.2rem;
+    width: 100%;
+  }
+
+  .md-search__overlay {
+    display: none;
+  }
+}
+
+.md-header .md-header__button,
+.md-header .md-header__title,
+.md-header .md-header__topic,
+.md-header .md-header__ellipsis,
+.md-tabs__link {
+  color: #0A8276;
+}
+
+/* ── Sidebar active link highlight ──────────────────────── */
+.md-nav__item--active > .md-nav__link {
+  color: #0A8276;
+  font-weight: 600;
+}
+
+/* ── Figure captions ─────────────────────────────────────── */
+img + em,
+p > img + br + em {
+  display: block;
+  text-align: center;
+  font-size: 0.85em;
+  color: #575352;
+  margin-top: 0.25em;
+}
+
+/* ── Table styling ───────────────────────────────────────── */
+.md-typeset table:not([class]) th {
+  background-color: #0A8276;
+  color: #FFFEFF;
+}
+
+/* ── Admonition accent overrides ─────────────────────────── */
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: #3B9B91;
+}
+.md-typeset .note > .admonition-title,
+.md-typeset .note > summary {
+  background-color: #DFF4F3;
+}
+.md-typeset .note > .admonition-title::before,
+.md-typeset .note > summary::before {
+  background-color: #0A8276;
+}
+
+/* ── Training level badge ────────────────────────────────── */
+.md-typeset .training-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.md-typeset .training-meta .badge {
+  background-color: #0A8276;
+  color: #FFFEFF;
+  border-radius: 4px;
+  padding: 0.2em 0.7em;
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ── Code fragment styling (from Doxygen) ─────────────────── */
+.md-typeset pre,
+.md-typeset code {
+  border: 1px solid #C4CFE5;
+  background-color: #FBFCFD;
+  font-family: monospace, fixed;
+}
+
+.md-typeset pre {
+  padding: 4px 6px;
+  margin: 4px 8px 4px 2px;
+  overflow: auto;
+  word-wrap: break-word;
+  line-height: 125%;
+}
+
+.md-typeset code {
+  padding: 2px 4px;
+}
+
+/* ── Syntax highlighting for code (Doxygen colors) ──────────── */
+.highlight .k  { color: #008000; } /* keyword */
+.highlight .kt { color: #604020; } /* keywordtype */
+.highlight .kf { color: #e08000; } /* keywordflow */
+.highlight .c  { color: #800000; } /* comment */
+.highlight .cp { color: #806020; } /* preprocessor */
+.highlight .s  { color: #002080; } /* stringliteral */
+.highlight .sc { color: #008080; } /* charliteral */
+
+/* ── Enhanced admonition styling (Doxygen-inspired) ────────── */
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: #FF0000;
+}
+
+.md-typeset .warning > .admonition-title,
+.md-typeset .warning > summary {
+  background-color: #FFE6E6;
+  border-left: 4px solid #FF0000;
+}
+
+.md-typeset .warning > .admonition-title::before,
+.md-typeset .warning > summary::before {
+  background-color: #FF0000;
+}
+
+.md-typeset .admonition.attention,
+.md-typeset details.attention {
+  border-color: #FF0000;
+}
+
+.md-typeset .admonition.todo,
+.md-typeset details.todo {
+  border-color: #00C0E0;
+}
+
+.md-typeset .todo > .admonition-title,
+.md-typeset .todo > summary {
+  background-color: #E6F7FB;
+  border-left: 4px solid #00C0E0;
+}
+
+.md-typeset .todo > .admonition-title::before,
+.md-typeset .todo > summary::before {
+  background-color: #00C0E0;
+}
+
+/* ── Inline code syntax colors (Doxygen) ───────────────────── */
+code.keyword     { color: #008000; }
+code.keywordtype { color: #604020; }
+code.keywordflow { color: #e08000; }
+code.comment     { color: #800000; }
+code.stringliteral { color: #002080; }
+
+/* Remove collapsible functionality and ensure headings are left-justified */
+.md-typeset h2,
+.md-typeset h3 {
+  cursor: default;
+  user-select: text;
+  position: static;
+  padding-left: 0;
+  transition: none;
+}
+
+.md-typeset h2:hover,
+.md-typeset h3:hover {
+  color: inherit;
+}
+
+.md-typeset h2::before,
+.md-typeset h3::before {
+  content: none;
+}
+
+/* Ensure headings are bold */
+.md-typeset h2,
+.md-typeset h3 {
+  font-weight: bold;
+}
